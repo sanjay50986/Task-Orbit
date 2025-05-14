@@ -1,14 +1,31 @@
 import React from 'react'
-import { BrowserRouter, Routes } from 'react-router'
-import RegisterRoutes from './routes/RegisterRoutes'
+import { createBrowserRouter, RouterProvider } from 'react-router'
+import RegisterLayout from './pages/auth/register/RegisterLayout'
+import RegisterStepOne from './pages/auth/register/RegisterStepOne'
+import VerifyOtp from './pages/auth/register/VerifyOtp'
+
 
 const App = () => {
+
+  const router = createBrowserRouter([
+    {
+      path: '/auth',
+      element: <RegisterLayout/>,
+      children: [
+        {
+          path: 'register',
+          element : <RegisterStepOne/>
+        },
+        {
+          path: 'verify',
+          element : <VerifyOtp/>
+        }
+      ]
+    }
+  ])
+
   return (
-    <BrowserRouter>
-      <Routes>
-        {RegisterRoutes}
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router}/>
   )
 }
 
