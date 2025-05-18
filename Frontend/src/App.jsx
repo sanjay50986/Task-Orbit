@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import RegisterLayout from './pages/auth/register/RegisterLayout'
 import RegisterStepOne from './pages/auth/register/StepEmail'
 import VerifyOtp from './pages/auth/register/StepVerificationCode'
-import StepUserInfo from './pages/auth/register/StepUserInfo'
+import RightSlider from './pages/auth/register/RightSlider'
 
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
 
     {
       path: 'auth/create-profile',
-      element: <StepUserInfo/>
+      element: <RightSlider/>
     }
   ])
 

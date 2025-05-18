@@ -1,18 +1,19 @@
 import ProgressSidebar from '@/components/auth/ProgressSidebar'
 import React from 'react'
+import StepProfileInfo from './StepProfileInfo'
 
-const StepUserInfo = () => {
+const rightSlider = () => {
   return (
     <div className="flex h-screen">
       <div className="xl:w-[20%] md:w-[33%] sm:w-[40%] bg-white m-4 rounded-2xl">
         <ProgressSidebar />
       </div>
 
-      {/* <div className="w-[70%] m-4">
-        <h1 className="text-xl">Step 1: User Info</h1>
-      </div> */}
+      <div className="w-[80%] flex items-center justify-center">
+        <StepProfileInfo/>
+      </div>
     </div>
   )
 }
 
-export default StepUserInfo
+export default rightSlider
