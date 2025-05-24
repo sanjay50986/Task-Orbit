@@ -3,6 +3,8 @@ import React from 'react'
 import StepProfileInfo from './StepProfileInfo'
 import SetupCompanyInfo from './SetupCompanyInfo'
 import SetupWorkspace from './SetupWorkspace'
+import SetupProject from './SetupProject'
+import SetupTeammates from './SetupTeammates'
 
 const rightSlider = () => {
   return (
@@ -12,7 +14,7 @@ const rightSlider = () => {
       </div>
 
       <div className="w-[80%] flex items-center justify-center">
-        <SetupWorkspace/>
+        <SetupTeammates/>
       </div>
     </div>
   )
