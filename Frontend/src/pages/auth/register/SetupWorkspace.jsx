@@ -2,7 +2,7 @@ import TextInput from '@/components/textInput/TextInput'
 import { Images, User } from 'lucide-react'
 import React from 'react'
 
-const SetupWorkspace = () => {
+const SetupWorkspace = ({onContinue}) => {
     return (
         <div className="bg-white rounded-2xl w-[550px] ">
             <div className='p-6'>
@@ -11,12 +11,12 @@ const SetupWorkspace = () => {
             </div>
 
             {/* Divider */}
-            <div className="w-full h-1 bg-[#0077B6]" />
+            <div className="w-full h-1 bg-[#7575C6]" />
 
             {/*------Left---------*/}
             <div className="space-y-2 p-6">
-                <div className="bg-[#CAF0F8] px-3 py-1.5 rounded-3xl inline-block">
-                    <h2 className="text-[12px] font-medium text-[#0077B6]">Set Workspace</h2>
+                <div className="bg-[#f1f2fe] px-3 py-1.5 rounded-3xl inline-block">
+                    <h2 className="text-[12px] font-medium text-[#7575C6]">Set Workspace</h2>
                 </div>
 
                 <h1 className='text-[15px] font-medium pt-2'>Organise your workspace, name it & describe it, useful when you <br />  have a team later on</h1>
@@ -60,7 +60,7 @@ const SetupWorkspace = () => {
                         Skip for now
                     </button>
 
-                    <button className='secondary-btn text-white px-4 py-2 text-sm'>
+                    <button onClick={onContinue} className='secondary-btn text-white px-4 py-2 text-sm'>
                         Continue
                     </button>
                 </div>

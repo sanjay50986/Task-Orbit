@@ -37,7 +37,7 @@ const VerifyOtp = () => {
                                 maxLength={1}
                                 onChange={(e) => handleChange(e, i)}
                                 onKeyDown={(e) => handleKeyDown(e, i)}
-                                className="sm:w-13 sm:h-13 w-11 h-11 text-xl text-center border border-gray-300 rounded-lg outline-[#212529]"
+                                className="sm:w-13 sm:h-13 w-11 h-11 text-xl text-center border border-gray-300 rounded-lg outline-[#7575C6]"
                             />
                         ))}
                     </div>
@@ -49,7 +49,7 @@ const VerifyOtp = () => {
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
-                    <h5 className='text-gray-600 text-center text-[14px]'>Enter wrong email? <span className='text-[#11326d]'>Change</span></h5>
+                    <h5 className='text-gray-600 text-center text-[14px]'>Enter wrong email? <span className='text-[#7575C6]'>Change</span></h5>
 
                 </div>
 

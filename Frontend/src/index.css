@@ -18,5 +18,5 @@
 }
 
 .secondary-btn {
-  @apply cursor-pointer border border-gray-200 bg-[#0077B6] w-full p-2.5 text-[14px] rounded-lg hover:bg-[#00B4D8] duration-200
+  @apply cursor-pointer border border-gray-200 bg-[#212529] w-full p-2.5 text-[14px] rounded-lg hover:bg-[#6C757D] duration-200
 }

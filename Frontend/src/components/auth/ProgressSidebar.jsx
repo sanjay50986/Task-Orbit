@@ -1,76 +1,58 @@
-import React from 'react'
-import { NotepadText, BriefcaseBusiness, BookText, Users  } from 'lucide-react';
+import React from 'react';
+import { NotepadText, BriefcaseBusiness, BookText, Users } from 'lucide-react';
 
+const steps = [
+    { id: 0, title: "Create an account", icon: NotepadText },
+    { id: 1, title: "Set Preferences", icon: BriefcaseBusiness },
+    { id: 2, title: "Setting workspace", icon: BookText },
+    { id: 3, title: "Invite member", icon: Users },
+];
 
-
-const ProgressSidebar = () => {
+const ProgressSidebar = ({ currentStep }) => {
     return (
-        <div >
+        <div>
             <div className='border-b p-4 border-gray-200'>
                 <h1 className='text-[20px] font-medium'>Create account</h1>
-                <h2 className='text-gray-600 text-[14px] pt-3 '>Please fill in each step properly and correctly, make sure no data is missing</h2>
+                <h2 className='text-gray-600 text-[14px] pt-3'>
+                    Please fill in each step properly and correctly, make sure no data is missing
+                </h2>
             </div>
 
-            <div className='p-4 space-y-10'>
-                <div className='flex items-center gap-4'>
+            <div className='p-4'>
+                {steps.map((step, index) => {
+                    const isActive = step.id === currentStep;
+                    const Icon = step.icon;
+                    const isLast = index === steps.length - 1;
 
-                    <div className='border rounded-full border-gray-200 p-1'>
-                        <div className='bg-gray-200 rounded-full p-3'>
-                            <NotepadText className='text-gray-600 w-4.5 h-4.5' />
+                    return (
+                        <div key={index} className='flex gap-4'>
+                            {/* ICON + LINE COLUMN */}
+                            <div className='flex flex-col items-center'>
+                                {/* Outer Circle */}
+                                <div className={`${index < currentStep ? "border-[#7575C6]" : "border-gray-200"} border rounded-full p-1`}>
+                                    {/* Inner Circle */}
+                                    <div className={`${index < currentStep ? "bg-[#7575C6] text-white" : "bg-gray-200 text-gray-600"} rounded-full p-3`}>
+                                        <Icon className="w-5 h-5" />
+                                    </div>
+                                </div>
+
+                                {/* Vertical Line */}
+                                {!isLast && (
+                                    <div className={`${index < currentStep ? "bg-[#7575C6]" : "bg-gray-300"} w-[2px] h-10 transition duration-400`} />
+                                )}
+                            </div>
+
+                            {/* TEXT COLUMN */}
+                            <div className="pt-1">
+                                <h1 className='text-gray-600 text-[12px]'>Step {step.id + 1}</h1>
+                                <h2 className='font-medium text-[13px]'>{step.title}</h2>
+                            </div>
                         </div>
-                    </div>
-
-                    <div>
-                        <h1 className='text-gray-600 text-[12px]'>Step 1</h1>
-                        <h2 className='font-medium text-[13px]'>Create an account</h2>
-                    </div>
-                </div>
-                <div className='flex items-center gap-4'>
-
-                    <div className='border rounded-full border-gray-200 p-1'>
-                        <div className='bg-gray-200 rounded-full p-3'>
-                            <BriefcaseBusiness  className='text-gray-600 w-4.5 h-4.5' />
-                        </div>
-                    </div>
-
-                    <div>
-                        <h1 className='text-gray-600 text-[12px]'>Step 2</h1>
-                        <h2 className='font-medium text-[13px]'>Set Preferences</h2>
-                    </div>
-                </div>
-
-                <div className='flex items-center gap-4'>
-
-                    <div className='border rounded-full border-gray-200 p-1'>
-                        <div className='bg-gray-200 rounded-full p-3'>
-                            <BookText className='text-gray-600 w-4.5 h-4.5' />
-                        </div>
-                    </div>
-
-                    <div>
-                        <h1 className='text-gray-600 text-[12px]'>Step 3</h1>
-                        <h2 className='font-medium text-[13px]'>Setting workspace</h2>
-                    </div>
-                </div>
-
-                <div className='flex items-center gap-4'>
-
-                    <div className='border rounded-full border-gray-200 p-1'>
-                        <div className='bg-gray-200 rounded-full p-3'>
-                            <Users className='text-gray-600 w-4.5 h-4.5' />
-                        </div>
-                    </div>
-
-                    <div>
-                        <h1 className='text-gray-600 text-[12px]'>Step 4</h1>
-                        <h2 className='font-medium text-[13px]'>Invite member</h2>
-                    </div>
-                </div>
-
-
+                    );
+                })}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProgressSidebar
+export default ProgressSidebar;

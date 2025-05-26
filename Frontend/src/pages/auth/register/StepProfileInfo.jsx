@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { User, Images, Eye, EyeOff } from 'lucide-react';
 import TextInput from '@/components/textInput/TextInput';
 
-const StepProfileInfo = () => {
+const StepProfileInfo = ({onContinue}) => {
 
     const [showPassword, setShowPassword] = useState(false)
 
@@ -70,7 +70,7 @@ const StepProfileInfo = () => {
 
                 </div>
 
-                <button className='secondary-btn text-white mt-3'>
+                <button onClick={onContinue} className='secondary-btn text-white mt-3'>
                     Continue
                 </button>
 

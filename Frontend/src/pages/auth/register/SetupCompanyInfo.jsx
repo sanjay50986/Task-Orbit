@@ -2,7 +2,7 @@ import TextInput from '@/components/textInput/TextInput'
 import { Eye, EyeOff, Images, User } from 'lucide-react'
 import React, { useState } from 'react'
 
-const SetupCompanyInfo = () => {
+const SetupCompanyInfo = ({onContinue}) => {
 
     const [showPassword, setShowPassword] = useState(false)
   return (
@@ -35,7 +35,7 @@ const SetupCompanyInfo = () => {
                     type="text"
                 />
 
-                <button className='secondary-btn text-white mt-3'>
+                <button onClick={onContinue} className='secondary-btn text-white mt-3'>
                     Continue
                 </button>
 

@@ -2,7 +2,7 @@ import TextInput from '@/components/textInput/TextInput'
 import { Check, Images, User } from 'lucide-react'
 import React, { useState } from 'react'
 
-const SetupProject = () => {
+const SetupProject = ({onContinue}) => {
 
     const colors = [
         "#36678D", "#6A68B1", "#55C0D3", "#754D75", "#A969DE", "#E573F1", "#2EDBCD", "#5EBB90",
@@ -20,12 +20,12 @@ const SetupProject = () => {
             </div>
 
             {/* Divider */}
-            <div className="w-full h-1 bg-[#0077B6]" />
+            <div className="w-full h-1 bg-[#7575C6]" />
 
             {/*------Left---------*/}
             <div className="space-y-2 p-6">
-                <div className="bg-[#CAF0F8] px-3 py-1.5 rounded-3xl inline-block">
-                    <h2 className="text-[12px] font-medium text-[#0077B6]">Add project</h2>
+                <div className="bg-[#f1f2fe] px-3 py-1.5 rounded-3xl inline-block">
+                    <h2 className="text-[12px] font-medium text-[#7575C6]">Add project</h2>
                 </div>
 
                 <h1 className='text-[15px] font-medium pt-2 pb-3'>Create your first project, what project are you working on now?</h1>
@@ -72,7 +72,7 @@ const SetupProject = () => {
                         Skip for now
                     </button>
 
-                    <button className='secondary-btn text-white px-4 py-2 text-sm'>
+                    <button onClick={onContinue} className='secondary-btn text-white px-4 py-2 text-sm'>
                         Continue
                     </button>
                 </div>

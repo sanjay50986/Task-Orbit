@@ -2,7 +2,7 @@ import TextInput from '@/components/textInput/TextInput'
 import React from 'react'
 import { Plus } from 'lucide-react'
 
-const SetupTeammates = () => {
+const SetupTeammates = ({onContinue}) => {
   return (
     <div className='flex justify-center items-center h-[80vh] max-sm:mx-4'>
       <div className='bg-white rounded-2xl p-2'>
@@ -32,7 +32,7 @@ const SetupTeammates = () => {
             </button>
           </div>
 
-          <button className='secondary-btn text-[16px] font-medium text-white mt-2'>Continue</button>
+          <button onClick={onContinue} className='secondary-btn text-[16px] font-medium text-white mt-2'>Continue</button>
           <button className='primary-btn'> Skip for now</button>
 
         </div>
