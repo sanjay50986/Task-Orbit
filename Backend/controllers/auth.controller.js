@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { UserModel } from '../models/user.model.js'
 import { sendEmail } from "../utils/sendEmail.js";
 import { STATUS_CODE } from "../utils/statusCode.js";
+import { OtpModel } from "../models/otp.model.js";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -63,7 +64,7 @@ export const sendOtp = async (req, res) => {
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
-        await UserModel.findOneAndUpdate(
+        await OtpModel.findOneAndUpdate(
             { email },
             { otp, expiresAt },
             { upsert: true, new: true }
@@ -86,7 +87,6 @@ export const sendOtp = async (req, res) => {
             error: error.message
         });
     }
-
 }
 
 // Verify Otp
@@ -95,7 +95,7 @@ export const verifyOtp = async (req, res) => {
 
     try {
 
-        const otpRecord = await UserModel.findOne({ email });
+        const otpRecord = await OtpModel.findOne({ email });
 
 
         if (!otpRecord) {
@@ -107,7 +107,7 @@ export const verifyOtp = async (req, res) => {
 
         // Check if OTP is expired
         if (otpRecord.expiresAt < new Date()) {
-            await UserModel.deleteOne({ email }); // Cleanup
+            await OtpModel.deleteOne({ email }); // Cleanup
             return res.status(STATUS_CODE.BAD_REQUEST).json({
                 success: false,
                 message: "OTP has expired. Please request a new one."
@@ -122,11 +122,12 @@ export const verifyOtp = async (req, res) => {
             });
         }
 
-        await UserModel.deleteOne({ email });
+        await OtpModel.deleteOne({ email });
 
         return res.status(STATUS_CODE.OK).json({
             success: true,
-            message: "OTP verified successfully."
+            message: "OTP verified successfully.",
+            email
         });
 
 
@@ -144,20 +145,13 @@ export const resendOtp = async (req, res) => {
     const { email } = req.body;
 
     try {
-        const existingUser = await UserModel.findOne({ email });
-        if (existingUser) {
-            return res.status(STATUS_CODE.CONFLICT).json({
-                success: false,
-                message: "Email is already registered."
-            });
-        }
-
+       
         // Generate new OTP
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
         // Upsert OTP
-        await UserModel.findOneAndUpdate(
+        await OtpModel.findOneAndUpdate(
             { email },
             { otp, expiresAt },
             { upsert: true, new: true }

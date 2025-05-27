@@ -1,5 +1,6 @@
 import React from 'react';
 import { NotepadText, BriefcaseBusiness, BookText, Users } from 'lucide-react';
+import Logo from '../../assets/Logo.png'
 
 const steps = [
     { id: 0, title: "Create an account", icon: NotepadText },
@@ -11,6 +12,8 @@ const steps = [
 const ProgressSidebar = ({ currentStep }) => {
     return (
         <div>
+            <img src={Logo} className='w-[65px] h-[63px] mt-4 ml-2' />
+
             <div className='border-b p-4 border-gray-200'>
                 <h1 className='text-[20px] font-medium'>Create account</h1>
                 <h2 className='text-gray-600 text-[14px] pt-3'>
@@ -20,7 +23,6 @@ const ProgressSidebar = ({ currentStep }) => {
 
             <div className='p-4'>
                 {steps.map((step, index) => {
-                    const isActive = step.id === currentStep;
                     const Icon = step.icon;
                     const isLast = index === steps.length - 1;
 

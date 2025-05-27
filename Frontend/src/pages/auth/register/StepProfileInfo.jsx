@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { User, Images, Eye, EyeOff } from 'lucide-react';
 import TextInput from '@/components/textInput/TextInput';
+import { authApi } from '@/services/authAPI';
+import { baseUrl } from '@/services/baseUrl';
+import { useAuthContext } from '@/context/AuthContext';
 
 const StepProfileInfo = ({onContinue}) => {
 
     const [showPassword, setShowPassword] = useState(false)
-
+    const {setEmail, setfirstName, setlastName, setPhoneNumber, setPassword} = useAuthContext()
+    
     return (
         <div className='bg-white p-4 rounded-2xl space-y-2 lg:w-[550px] sm:w-[450px] py-6 px-4.5' >
             <h1 className='text-[22px] font-medium '>Complete your information</h1>
@@ -35,24 +39,28 @@ const StepProfileInfo = ({onContinue}) => {
                     label="First name"
                     placeholder="Enter your name"
                     type="text"
+                    onChange={(e) => setfirstName(e.target.value)}
                 />
 
                 <TextInput
                     label="Last name"
                     placeholder="Enter your last"
                     type="text"
+                    onChange={(e) => setlastName(e.target.value)}
                 />
 
                 <TextInput
                     label="Email"
                     placeholder="Enter your email"
                     type="email"
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <TextInput
                     label="Phone number"
                     placeholder="Enter your phone number"
                     type="number"
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                 />
 
                 <label className='font-medium text-[14px]'>Create Password</label>
@@ -61,6 +69,7 @@ const StepProfileInfo = ({onContinue}) => {
                         className='outline-none text-[14px] w-full px-1'
                         placeholder='Create password'
                         type={showPassword ? "text" : "password"}
+                        onChange={(e) => setPassword(e.target.value)}
 
                     />
                     <button className='cursor-pointer'
