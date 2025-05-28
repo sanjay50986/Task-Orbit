@@ -2,18 +2,26 @@ import TextInput from '@/components/textInput/TextInput';
 import { useAuthContext } from '@/context/AuthContext';
 import { authApi } from '@/services/authAPI';
 import { baseUrl } from '@/services/baseUrl';
-import React from 'react'
+import React, { useState } from 'react'
 import { FaGoogle } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { PuffLoader, } from 'react-spinners';
+import { toast } from 'sonner';
 
 const RegisterStepOne = () => {
 
     const { email, setEmail } = useAuthContext()
-  
+    const [loader, setLoader] = useState(false)
+
     const navigate = useNavigate();
-    
+
     const sendOtpApi = async () => {
-        try {
+
+        if(!email) {
+            return toast.error("Email is required")
+        }
+        try { 
+            setLoader(true)
             const response = await fetch(`${baseUrl}/auth/${authApi.SEND_OTP}`, {
                 method: "POST",
                 headers: {
@@ -27,17 +35,43 @@ const RegisterStepOne = () => {
             const data = await response.json();            
 
             if (response.status === 200) {
-                console.log("OTP sent to email successfully");
-                console.log("Server Response:", data);
+                toast.success("OTP sent successfully");
                 navigate('/auth/verify')
             } else {
-                console.error("Failed to send OTP:", data.message || "Unknown error");
+                toast.error(data.message || "Unknown error");
             }
 
         } catch (error) {
-            console.error("Error sending OTP:", error.message);
+            toast.error("Error sending OTP:", error.message);
+        } finally {
+            setLoader(false)
         }
     };
+
+    // const loginWithGoogle = async () => {
+    //     try {
+    //         const res = await fetch(`${baseUrl}/auth/${authApi.GOOGLE_LOGIN}`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({
+    //                 token: credentialResponse.credential,
+    //             }),
+    //         });
+
+    //         const data = await res.json();
+
+    //         if (data.success) {
+    //             localStorage.setItem('token', data.token);
+    //             console.log('User:', data.user);
+    //         } else {
+    //             console.error('Login failed:', data.message);
+    //         }
+    //     } catch (err) {
+    //         console.error('Login failed:', err.message);
+    //     }
+    // };
 
 
     return (
@@ -55,11 +89,13 @@ const RegisterStepOne = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
-                    <button onClick={sendOtpApi} className='secondary-btn text-[16px] font-medium text-white mt-1'>Login now</button>
+                    <button disabled={loader} onClick={sendOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
+                        loader ? <PuffLoader color='white' size={24} /> : "Login now"
+                    }</button>
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
-                    <h5 className='text-gray-600 text-center text-[14px]'>Already have an account? <span className='text-[#11326d]'>Login</span></h5>
+                    <h5 className='text-gray-600 text-center text-[14px]'>Already have an account? <Link to="/auth/login" className='text-[#11326d]'>Login</Link></h5>
                 </div>
             </div>
         </div>

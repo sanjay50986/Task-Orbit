@@ -1,6 +1,7 @@
 import { authApi } from '@/services/authAPI';
 import { baseUrl } from '@/services/baseUrl';
 import React, { createContext, useContext, useState } from 'react'
+import { toast } from 'sonner';
 
 const AuthContext = createContext()
 
@@ -14,6 +15,9 @@ const AuthProvider = ({ children }) => {
     const [company, setCompany] = useState("")
     const [industry, setIndustry] = useState("")
     const [role, setRole] = useState("")
+
+    console.log(role, industry)
+
 
 
     const signUpApi = async () => {
@@ -37,11 +41,10 @@ const AuthProvider = ({ children }) => {
 
             const data = await response.json();
 
-            if (response.status === 200) {
-                console.log("User create successfully");
-                console.log("Server Response:", data);
+            if (response.ok) {
+                toast.success("User create successfully");
             } else {
-                console.error("Failed to create user:", data.message || "Unknown error");
+                toast.error(data.message || "Unknown error");
             }
 
         } catch (error) {

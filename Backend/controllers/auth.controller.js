@@ -52,8 +52,16 @@ export const googleLogin = async (req, res) => {
 // Send Otp 
 export const sendOtp = async (req, res) => {
     const { email } = req.body;
+
+    if(!email) {
+        return res.status(STATUS_CODE.NOT_FOUND).json({
+            success: false,
+            message: "Email is required"
+        })
+    }
     const user = await UserModel.findOne({ email });
     try {
+
         if (user) {
             return res.status(STATUS_CODE.BAD_REQUEST).json({
                 success: false,

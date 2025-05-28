@@ -1,23 +1,26 @@
-import TextInput from '@/components/textInput/TextInput';
 import { useAuthContext } from '@/context/AuthContext';
 import { authApi } from '@/services/authAPI';
 import { baseUrl } from '@/services/baseUrl';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaGoogle } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { PuffLoader } from 'react-spinners';
+import { toast } from 'sonner';
 
 
 const VerifyOtp = () => {
 
     const inputsRef = useRef([]);
     const [otp, setOtp] = useState("")
-    const {email} = useAuthContext()
+    const [loader, setloader] = useState(false)
+    const [timer, setTimer] = useState(0)
+    const { email } = useAuthContext()
     const navigate = useNavigate()
 
     const handleChange = (e, index) => {
         const value = e.target.value.toUpperCase();
         e.target.value = value;
-        
+
         let otpValue = ""
         inputsRef.current.forEach((index) => {
             otpValue += index?.value
@@ -37,7 +40,13 @@ const VerifyOtp = () => {
     };
 
     const verifyOtpApi = async () => {
+
+        if(!otp) {
+            return toast.error("OTP is required")
+        }
+
         try {
+            setloader(true)
             const response = await fetch(`${baseUrl}/auth/${authApi.VERIFY_OTP}`, {
                 method: "POST",
                 headers: {
@@ -52,20 +61,22 @@ const VerifyOtp = () => {
             const data = await response.json();
 
             if (response.status === 200) {
-                console.log("OTP verify successfully");
-                console.log("Server Response:", data);
+                toast.success("OTP verify successfully");
                 navigate('/auth/create-profile');
             } else {
-                console.error("Failed to verify OTP:", data.message || "Unknown error");
+                toast.error("Failed to verify OTP:", data.message || "Unknown error");
             }
 
         } catch (error) {
             console.error("Error verify OTP:", error.message);
+        } finally {
+            setloader(false)
         }
     };
 
     const resendOtpApi = async () => {
         try {
+            setTimer(30);
             const response = await fetch(`${baseUrl}/auth/${authApi.RESEND_OTP}`, {
                 method: "POST",
                 headers: {
@@ -79,16 +90,25 @@ const VerifyOtp = () => {
             const data = await response.json();
 
             if (response.status === 200) {
-                console.log("Resend OTP successfully");
-                console.log("Server Response:", data);
+                toast.success("Resend OTP successfully");
             } else {
-                console.error("Failed to resend OTP:", data.message || "Unknown error");
+                toast.error("Failed to resend OTP:", data.message || "Unknown error");
             }
 
         } catch (error) {
             console.error("Error verify OTP:", error.message);
         }
     };
+
+
+    useEffect(() => {
+        let interval;
+        if (timer > 0) {
+            interval = setInterval(() => setTimer((prev) => prev - 1), 1000)
+        }
+
+        return () => clearInterval(interval)
+    }, [timer])
 
     return (
         <div className='flex justify-center items-center h-[80vh] max-sm:mx-4'>
@@ -110,15 +130,25 @@ const VerifyOtp = () => {
                             />
                         ))}
                     </div>
-                    <button onClick={verifyOtpApi} className='secondary-btn text-[16px] font-medium text-white mt-4'>Continue</button>
-                    <button onClick={resendOtpApi} className='primary-btn text-[16px] font-medium text-gray-600 bg-white'>Resend code</button>
+                    <button disabled={loader} onClick={verifyOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-1`}>{
+                        loader ? <PuffLoader color='white' size={24} /> : "Login now"
+                    }</button>
+
+                    <button
+                        onClick={resendOtpApi}
+                        disabled={timer > 0}
+                        className={`primary-btn text-[16px] font-medium text-gray-600 bg-white ${(timer > 0) ? 'opacity-50 cursor-not-allowed' : ''
+                            }`}
+                    >
+                        {timer > 0 ? `Resend in ${timer}s` : "Resend OTP"}
+                    </button>
                     <h4 className='text-center text-gray-600 text-[14px] pt-2 font-medium'>Or continue with</h4>
                     <button className='primary-btn'> <FaGoogle /><span className=' font-medium'>Sign up with Google</span></button>
 
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
-                    <h5 className='text-gray-600 text-center text-[14px]'>Enter wrong email? <span className='text-[#7575C6]'>Change</span></h5>
+                    <h5 className='text-gray-600 text-center text-[14px]'>Enter wrong email? <Link to="/auth/register" className='text-[#7575C6]'>Change</Link></h5>
 
                 </div>
 

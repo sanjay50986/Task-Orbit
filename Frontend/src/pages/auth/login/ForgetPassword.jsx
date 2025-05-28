@@ -2,6 +2,7 @@ import TextInput from '@/components/textInput/TextInput';
 import { Eye, EyeOff } from 'lucide-react';
 import React, { useState } from 'react'
 import { FaGoogle } from "react-icons/fa";
+import { Link } from 'react-router';
 
 const ForgetPassword = () => {
 
@@ -47,7 +48,7 @@ const ForgetPassword = () => {
                     </div>
 
                     <button className='secondary-btn text-[16px] font-medium text-white mt-1'>Resend password</button>
-                    <button className='primary-btn text-[16px] font-medium text-black'>Cancel</button>
+                    <Link to="/auth/login" className='primary-btn text-[16px] font-medium text-black'>Cancel</Link>
 
                     
                 </div>

@@ -6,7 +6,9 @@ import VerifyOtp from './pages/auth/register/StepVerificationCode'
 import RightSlider from './pages/auth/register/RightSlider'
 import Login from './pages/auth/login/Login'
 import ForgetPassword from './pages/auth/login/ForgetPassword'
-import AuthProvider from './context/AuthContext'
+import AuthProvider from './context/AuthContext' 
+import { Toaster } from 'sonner'
+
 
 
 const App = () => {
@@ -52,6 +54,7 @@ const App = () => {
   return (
     <AuthProvider>
       <RouterProvider router={router} />
+      <Toaster position='top-center' richColors duration={3000}/>
     </AuthProvider>
   )
 }

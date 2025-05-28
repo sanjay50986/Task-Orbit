@@ -2,6 +2,7 @@ import TextInput from '@/components/textInput/TextInput';
 import { Eye, EyeOff } from 'lucide-react';
 import React, { useState } from 'react'
 import { FaGoogle } from "react-icons/fa";
+import { Link } from 'react-router';
 
 const Login = () => {
 
@@ -35,13 +36,16 @@ const Login = () => {
 
                     </div>
 
-                    <h4 className='text-right font-medium text-[14px] text-[#7575C6]'>Forget password?</h4>
+                    <div className='flex justify-end'>
+                    <Link to="/auth/forget-password" className='font-medium text-[14px] text-[#7575C6]'>Forget password?</Link>
+
+                    </div>
 
                     <button className='secondary-btn text-[16px] font-medium text-white mt-1'>Login now</button>
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
-                    <h5 className='text-gray-600 text-center text-[14px]'>Don't have an account? <span className='text-[#7575C6]'>Create account</span></h5>
+                    <h5 className='text-gray-600 text-center text-[14px]'>Don't have an account? <Link to="/auth/register" className='text-[#7575C6]'>Create account</Link></h5>
                 </div>
             </div>
         </div>
