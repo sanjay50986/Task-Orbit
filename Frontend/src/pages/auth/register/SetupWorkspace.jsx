@@ -3,6 +3,8 @@ import { Images, User } from 'lucide-react'
 import React from 'react'
 
 const SetupWorkspace = ({onContinue}) => {
+
+
     return (
         <div className="bg-white rounded-2xl w-[550px] ">
             <div className='p-6'>

@@ -6,8 +6,12 @@ import SetupWorkspace from './SetupWorkspace'
 import SetupProject from './SetupProject'
 import SetupTeammates from './SetupTeammates'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useAuthContext } from '@/context/AuthContext'
+import { toast } from 'sonner'
 
 const rightSlider = () => {
+
+  const {email, firstName, password, company, role, industry, phoneNumber, lastName} = useAuthContext()
 
   const setups = [
     StepProfileInfo,
@@ -22,6 +26,11 @@ const rightSlider = () => {
 
 
   const next = () => {
+    // if(!email || !firstName || !lastName || !password || !phoneNumber) {
+    //   return toast.error("All fields are required")
+    // }
+
+
     if (currentStep < setups.length - 1) {
       setCurrentStep(currentStep + 1)
     }

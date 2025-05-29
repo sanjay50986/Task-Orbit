@@ -15,12 +15,10 @@ const AuthProvider = ({ children }) => {
     const [company, setCompany] = useState("")
     const [industry, setIndustry] = useState("")
     const [role, setRole] = useState("")
-
-    console.log(role, industry)
-
-
+    
 
     const signUpApi = async () => {
+
         try {
             const response = await fetch(`${baseUrl}/auth/${authApi.SIGN_UP}`, {
                 method: "POST",
@@ -33,8 +31,8 @@ const AuthProvider = ({ children }) => {
                     email: email,
                     phoneNumber: Number(phoneNumber),
                     password: password,
-                    companay: company,
-                    industry: industry,
+                    companay: company ,
+                    industry: industry ,
                     role: role
                 }),
             });

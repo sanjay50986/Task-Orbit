@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema(
         industry: {
             type: String,
             enum: ENUM.INDUSTRIES,
-            default: "other",
+            default: "Other",
             
         },
 

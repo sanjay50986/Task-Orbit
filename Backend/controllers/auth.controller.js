@@ -1,12 +1,12 @@
 import { OAuth2Client } from "google-auth-library";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs"
 import { UserModel } from '../models/user.model.js'
 import { sendEmail } from "../utils/sendEmail.js";
 import { STATUS_CODE } from "../utils/statusCode.js";
 import { OtpModel } from "../models/otp.model.js";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
 
 // Google Login
 export const googleLogin = async (req, res) => {
@@ -53,8 +53,8 @@ export const googleLogin = async (req, res) => {
 export const sendOtp = async (req, res) => {
     const { email } = req.body;
 
-    if(!email) {
-        return res.status(STATUS_CODE.NOT_FOUND).json({
+    if (!email) {
+        return res.status(STATUS_CODE.BAD_REQUEST).json({
             success: false,
             message: "Email is required"
         })
@@ -153,7 +153,7 @@ export const resendOtp = async (req, res) => {
     const { email } = req.body;
 
     try {
-       
+
         // Generate new OTP
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
@@ -185,7 +185,7 @@ export const resendOtp = async (req, res) => {
 
 // SignUp
 export const signUp = async (req, res) => {
-    const { firstName, lastName, email, phoneNumber, password, profileImageUrl, companay, industry, role  } = req.body;
+    const { firstName, lastName, email, phoneNumber, password, profileImageUrl, companay, industry, role } = req.body;
 
     if (!firstName || !lastName || !email || !phoneNumber || !password) {
         return res.status(STATUS_CODE.BAD_REQUEST).json({
@@ -235,3 +235,90 @@ export const signUp = async (req, res) => {
         });
     }
 }
+
+// Login 
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await UserModel.findOne({ email })
+
+        if (!user) {
+            return res.status(STATUS_CODE.UNAUTHORIZED).json({
+                success: false,
+                message: "Invalid email or password"
+            });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid) {
+            return res.status(STATUS_CODE.UNAUTHORIZED).json({
+                success: false,
+                message: "Invalid email or password"
+            });
+        }
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: '7d'
+        });
+
+        return res.status(STATUS_CODE.OK).json({
+            success: true,
+            message: "Login successful",
+            token,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+
+            }
+        });
+
+    } catch (error) {
+        console.error("Login error:", error);
+        return res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+            success: false,
+            message: "Something went wrong"
+        });
+    }
+}
+
+export const forgetPassword = async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(STATUS_CODE.BAD_REQUEST).json({
+            success: false,
+            message: "Email and new password are required"
+        });
+    }
+
+    try {
+        const user = await UserModel.findOne({ email });
+
+        if (!user) {
+            return res.status(STATUS_CODE.NOT_FOUND).json({
+                success: false,
+                message: "User not found with this email"
+            });
+        }
+
+
+        user.password = password; 
+        await user.save();
+
+        return res.status(STATUS_CODE.OK).json({
+            success: true,
+            message: "Password updated successfully"
+        });
+
+    } catch (error) {
+        console.error("Forget Password Error:", error);
+        return res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+            success: false,
+            message: "Internal server error",
+            error: error.message
+        });
+    }
+};

@@ -5,8 +5,8 @@ import React, { useState } from 'react'
 
 const SetupCompanyInfo = ({ onContinue }) => {
 
-    const [showPassword, setShowPassword] = useState(false)
-    const { setCompany, setIndustry, setRole } = useAuthContext()
+    const { setCompany, setIndustry, setRole, signUpApi } = useAuthContext()
+
     return (
         <div className='bg-white p-4 rounded-2xl space-y-2 lg:w-[550px] sm:w-[450px] py-6 px-4.5' >
             <h1 className='text-[22px] font-medium '>Tell about yourself</h1>
@@ -20,11 +20,12 @@ const SetupCompanyInfo = ({ onContinue }) => {
                     onChange={(e) => setCompany(e.target.value)}
                 />
 
-    
+
                 <div className='flex flex-col'>
                     <label className='font-medium text-[14px]'>Industry/field</label>
                     <select className='border border-gray-200 p-2 rounded-md outline-none mt-1 text-[14px]'
                         onChange={(e) => setIndustry(e.target.value)}>
+                        <option >Select Industry</option>
                         <option value="IT">Information Technology</option>
                         <option value="Healthcare">Healthcare</option>
                         <option value="Finance">Finance</option>
@@ -39,6 +40,8 @@ const SetupCompanyInfo = ({ onContinue }) => {
                     <label className='font-medium text-[14px]'>Your role</label>
                     <select className='border border-gray-200 p-2 rounded-md outline-none mt-1 text-[14px]'
                         onChange={(e) => setRole(e.target.value)}>
+                        <option value="admin">Select Role</option>
+
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                         <option value="manager">Manager</option>
@@ -46,12 +49,8 @@ const SetupCompanyInfo = ({ onContinue }) => {
                     </select>
                 </div>
 
-                <button onClick={onContinue} className='secondary-btn text-white mt-3'>
+                <button onClick={signUpApi} className='secondary-btn text-white mt-3'>
                     Continue
-                </button>
-
-                <button className='primary-btn text-black'>
-                    Skip for now
                 </button>
 
             </div>

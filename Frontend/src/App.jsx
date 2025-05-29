@@ -6,8 +6,10 @@ import VerifyOtp from './pages/auth/register/StepVerificationCode'
 import RightSlider from './pages/auth/register/RightSlider'
 import Login from './pages/auth/login/Login'
 import ForgetPassword from './pages/auth/login/ForgetPassword'
-import AuthProvider from './context/AuthContext' 
+import AuthProvider from './context/AuthContext'
 import { Toaster } from 'sonner'
+import Layout from './components/Layout'
+import Dashboard from './pages/Home/Dashboard'
 
 
 
@@ -17,7 +19,7 @@ const App = () => {
 
     {
       path: '/',
-      element: <Navigate to="/auth/login" replace /> // ✅ Default redirect to login
+      element: <Navigate to="auth/login" replace />
     },
 
     {
@@ -48,13 +50,24 @@ const App = () => {
     {
       path: 'auth/create-profile',
       element: <RightSlider />
+    },
+
+    {
+      path: '/workspace',
+      element: <Layout />,
+      children: [
+        {
+          path: 'dashboard',
+          element: <Dashboard />
+        }
+      ]
     }
   ])
 
   return (
     <AuthProvider>
       <RouterProvider router={router} />
-      <Toaster position='top-center' richColors duration={3000}/>
+      <Toaster position='top-center' richColors duration={3000} />
     </AuthProvider>
   )
 }

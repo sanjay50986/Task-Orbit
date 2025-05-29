@@ -8,7 +8,7 @@ import { useAuthContext } from '@/context/AuthContext';
 const StepProfileInfo = ({onContinue}) => {
 
     const [showPassword, setShowPassword] = useState(false)
-    const {setEmail, setfirstName, setlastName, setPhoneNumber, setPassword} = useAuthContext()
+    const {setEmail, setfirstName, setlastName, setPhoneNumber, setPassword, signUpApi} = useAuthContext()
     
     return (
         <div className='bg-white p-4 rounded-2xl space-y-2 lg:w-[550px] sm:w-[450px] py-6 px-4.5' >
@@ -37,14 +37,14 @@ const StepProfileInfo = ({onContinue}) => {
             <div className='space-y-4.5 mt-5'>
                 <TextInput
                     label="First name"
-                    placeholder="Enter your name"
+                    placeholder="Enter your first name"
                     type="text"
                     onChange={(e) => setfirstName(e.target.value)}
                 />
 
                 <TextInput
                     label="Last name"
-                    placeholder="Enter your last"
+                    placeholder="Enter your last name"
                     type="text"
                     onChange={(e) => setlastName(e.target.value)}
                 />

@@ -1,12 +1,54 @@
 import TextInput from '@/components/textInput/TextInput';
+import { authApi } from '@/services/authAPI';
+import { baseUrl } from '@/services/baseUrl';
 import { Eye, EyeOff } from 'lucide-react';
 import React, { useState } from 'react'
 import { FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router';
+import { PuffLoader } from 'react-spinners';
+import { toast } from 'sonner';
 
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [loading, setloading] = useState(false)
+
+
+    const loginApi = async () => {
+
+        if (!email || !password) {
+            return toast.error("Email and password required")
+        }
+        try {
+            setloading(true)
+            const response = await fetch(`${baseUrl}/auth/${authApi.LOGIN}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                toast.success(data.message);
+            } else {
+                toast.error(data.message || "Unknown error");
+            }
+
+        } catch (error) {
+            console.error("Error create user:", error.message);
+        } finally {
+            setloading(false)
+        }
+    }
+
     return (
         <div className='flex justify-center items-center h-[80vh]'>
             <div className='bg-white rounded-2xl p-2  max-sm:mx-4 w-[450px]'>
@@ -19,6 +61,7 @@ const Login = () => {
                         label="Email"
                         placeholder="Enter your email"
                         type="email"
+                        onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <label className='font-medium text-[14px]'>Password</label>
@@ -27,6 +70,7 @@ const Login = () => {
                             className='outline-none text-[14px] w-full px-1'
                             placeholder='Enter password'
                             type={showPassword ? "text" : "password"}
+                            onChange={(e) => setPassword(e.target.value)}
 
                         />
                         <button className='cursor-pointer'
@@ -37,11 +81,13 @@ const Login = () => {
                     </div>
 
                     <div className='flex justify-end'>
-                    <Link to="/auth/forget-password" className='font-medium text-[14px] text-[#7575C6]'>Forget password?</Link>
+                        <Link to="/auth/forget-password" className='font-medium text-[14px] text-[#7575C6]'>Forget password?</Link>
 
                     </div>
 
-                    <button className='secondary-btn text-[16px] font-medium text-white mt-1'>Login now</button>
+                    <button disabled={loading} onClick={loginApi} className={`secondary-btn text-[16px] ${loading ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
+                        loading ? <PuffLoader color='white' size={24} /> : "Login now"
+                    }</button>
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
