@@ -6,11 +6,11 @@ import Sidebar from './Sidebar'
 
 const Layout = () => {
     return (
-        <div className='flex h-screen w-full'>
-            <div className='w-[240px]'>
+        <div className='flex h-screen'>
+            <div >
                 <Sidebar />
             </div>
-            <div className='flex flex-col flex-1 overflow-hidden bg-white m-2.5 rounded-md'>
+            <div className='flex flex-col flex-1 overflow-hidden bg-white rounded-md'>
                 <Topbar />
                 <main className="flex-1 overflow-y-auto bg-white">
                     <Outlet />

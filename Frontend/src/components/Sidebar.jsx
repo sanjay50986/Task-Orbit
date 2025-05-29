@@ -1,14 +1,75 @@
 import React from 'react'
 import Logo from "../assets/Logo.png"
-import { PanelsTopLeft } from 'lucide-react'
+import { ChevronDown, ClipboardList, FolderOpenDot, Goal, House, PanelsTopLeft, Plus, Search, Settings, User } from 'lucide-react'
 
 const Sidebar = () => {
   return (
-    <div className='px-2 py-1'>
-      <div className='flex justify-between items-center'>
-        <img src={Logo} alt='logo' className='w-[50px] h-[50px]'/>
-        <PanelsTopLeft className='text-gray-500'/>
+    <div className='py-2 space-y-5'>
+      <div className='px-3.5'>
+        <div className='flex justify-between items-center'>
+          <img src={Logo} alt='logo' className='w-[50px] h-[50px]' />
+          <PanelsTopLeft className='text-[#7f7f89]' />
+        </div>
+
+        <div className='bg-white rounded-md shadow-xs text-[14px] p-2 px-6 flex items-center gap-2 mt-4'>
+          <Search className='text-[#7f7f89] text-[10px]' />
+          <input type="text"
+            placeholder='Search...'
+            className='text-[#7f7f89] outline-none w-full' />
+        </div>
       </div>
+
+      <hr className='text-gray-200' />
+
+      <div className='px-3.5 '>
+        <div className='bg-white flex shadow-xs rounded-xl p-2 justify-between items-center'>
+          <div className='flex items-center gap-3'>
+            <div className='bg-white rounded-xl p-3 border border-gray-200 '>
+              <User className='w-[20px] h-[20px]' />
+            </div>
+            <div>
+              <h1 className='text-[14px] font-medium'>Creative Core</h1>
+              <h2 className='text-[12px] text-[#7f7f89]'>23 Members</h2>
+            </div>
+          </div>
+
+          <ChevronDown className='text-[#7f7f89]' size={20} />
+        </div>
+
+        <h3 className='text-[#7f7f89] pt-5 text-[14px] font-medium '>GENERAL</h3>
+
+        <div className='mt-4 space-y-6'>
+          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><House size={18} /> <span>Dashboard</span></button>
+          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><ClipboardList size={18} /> <span>My tasks</span></button>
+          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><Goal size={18} /> <span>Goals</span></button>
+          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><Settings size={18} /> <span>Settings</span></button>
+        </div>
+      </div>
+
+      <hr className='text-gray-200' />
+
+      <div className='px-3.5 '>
+        <div className='flex items-center justify-between'>
+          <h3 className='text-[#7f7f89] text-[14px] font-medium'>PROJECTS</h3>
+          <Plus className='text-[#7f7f89]' size={20} />
+        </div>
+
+        <div className='my-4 flex items-center gap-2'>
+          <FolderOpenDot className='text-amber-400' />
+           <h5 className='text-[#7f7f89] text-[14px] '>Aerotech Web design</h5>
+        </div>
+
+        <div className='my-4 flex items-center gap-2'>
+          <FolderOpenDot className='text-red-600' />
+           <h5 className='text-[#7f7f89] text-[14px] '>Climtown Web design</h5>
+        </div>
+
+        <div className='my-4 flex items-center gap-2'>
+          <FolderOpenDot className='text-green-600' />
+           <h5 className='text-[#7f7f89] text-[14px] '>Uwo dashboard design</h5>
+        </div>
+      </div>
+
     </div>
   )
 }

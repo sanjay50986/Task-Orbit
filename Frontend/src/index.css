@@ -2,6 +2,7 @@
 @import "tailwindcss";
 
 
+
 @layer base {
     html {
         font-family: "Poppins", "sans-serif"
@@ -20,3 +21,5 @@
 .secondary-btn {
   @apply cursor-pointer border border-gray-200 bg-[#212529] w-full h-11 text-[14px] flex items-center justify-center rounded-lg hover:bg-[#6C757D] duration-200
 }
+
+
