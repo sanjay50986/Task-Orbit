@@ -12,7 +12,7 @@ const Dashboard = () => {
       <h1 className='text-[22px] font-medium'>Lets start today, Bagus!</h1>
       <h2 className='text-[14px] text-[#7f7f89] font-medium pt-1'><span className='text-gray-600'>8 pending</span> tasks across <span className='text-gray-600'>2 projects</span> today!</h2>
 
-      <div className='grid grid-cols-3 grid-rows-3 mt-4 gap-3.5'>
+      <div className='grid xl:grid-cols-3 grid-cols-1 md:grid-cols-2 mt-4 gap-3.5'>
         {/**--Team Performance--- */}
         <div className='border border-gray-200  rounded-2xl max-h-[260px]'>
           <div className='border-b px-4 py-2   border-gray-200 flex justify-between items-center'>
@@ -50,7 +50,7 @@ const Dashboard = () => {
         </div>
 
         {/**--Task completed--- */}
-        <div className='border border-gray-200 rounded-2xl max-h-[260px] flex flex-col'>
+        <div className='border border-gray-200 rounded-2xl max-h-[260px] flex flex-col md:col-span-2 xl:col-span-1 '>
           <div className='border-b px-4 py-2 border-gray-200 flex justify-between items-center'>
             <h1 className='font-medium text-[16px]'>Task completed</h1>
             <Ellipsis className='text-[#7f7f89]' />
@@ -69,21 +69,24 @@ const Dashboard = () => {
             <ProjectTasksChart />
           </div>
         </div>
+      </div>
 
-        {/**--My Tasks--- */}
-        <div className='border border-gray-200 rounded-2xl col-span-2 row-span-2'>
-         
-          
-        </div>
+      <div className='grid xl:grid-cols-3 grid-cols-3 grid-rows-1 mt-4 gap-3.5'>
+        {/**--My Task--- */}
+        {/* <div className='border border-gray-200 rounded-2xl row-span-2 col-span-2 '>
+          <div className='border-b px-4 py-2 border-gray-200 flex justify-between items-center'>
+            <h1 className='font-medium text-[16px]'>My tasks</h1>
+            <Ellipsis className='text-[#7f7f89]' />
+          </div>
+        </div> */}
 
         {/**--Goals--- */}
-        <div className='border border-gray-200 rounded-2xl row-span-2'>
-         
-          
-        </div>
-
-
-        
+        {/* <div className='border border-gray-200 rounded-2xl '>
+          <div className='border-b px-4 py-2 border-gray-200 flex justify-between items-center'>
+            <h1 className='font-medium text-[16px]'>Goals</h1>
+            <Ellipsis className='text-[#7f7f89]' />
+          </div>
+        </div> */}
       </div>
     </div>
   )
