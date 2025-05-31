@@ -1,10 +1,11 @@
 import React from 'react'
 import Logo from "../assets/Logo.png"
-import { ChevronDown, ClipboardList, FolderOpenDot, Goal, House, PanelsTopLeft, Plus, Search, Settings, User } from 'lucide-react'
+import { ChevronDown, ChevronsUpDown, ClipboardList, FolderOpenDot, Goal, House, PanelsTopLeft, Plus, Search, Settings, User } from 'lucide-react'
+import { NavLink } from 'react-router'
 
 const Sidebar = () => {
   return (
-    <div className='py-2 space-y-5'>
+    <div className='py-2 space-y-5' >
       <div className='px-3.5'>
         <div className='flex justify-between items-center'>
           <img src={Logo} alt='logo' className='w-[50px] h-[50px]' />
@@ -33,16 +34,33 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <ChevronDown className='text-[#7f7f89]' size={20} />
+          <ChevronsUpDown  className='text-[#7f7f89]' size={16} />
         </div>
 
         <h3 className='text-[#7f7f89] pt-5 text-[14px] font-medium '>GENERAL</h3>
 
-        <div className='mt-4 space-y-6'>
-          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><House size={18} /> <span>Dashboard</span></button>
-          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><ClipboardList size={18} /> <span>My tasks</span></button>
-          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><Goal size={18} /> <span>Goals</span></button>
-          <button className='flex items-center gap-2 text-gray-500 font-medium text-[15px]'><Settings size={18} /> <span>Settings</span></button>
+        <div className='mt-4 space-y-1.5'>
+          <NavLink to="/workspace/dashboard" className={({ isActive }) =>
+            `flex items-center gap-2  font-medium text-[15px] p-2 rounded-md ${isActive ? 'shadow-xs' : ''} ${isActive ? "text-[#7575C6]" : "text-gray-500"} ${isActive ? "bg-white" : "bg-none"}`}>
+            <House size={18} /> <span>Dashboard</span>
+          </NavLink>
+
+
+          <NavLink to="/workspace/tasks" className={({ isActive }) =>
+            `flex items-center gap-2  font-medium text-[15px] p-2 rounded-md ${isActive ? 'shadow-xs' : ''} ${isActive ? "text-[#7575C6]" : "text-gray-500"} ${isActive ? "bg-white" : "bg-none"}`}
+          ><ClipboardList size={18} /> <span>My tasks</span>
+          </NavLink>
+
+          <NavLink to="/workspace/goals"  className={({ isActive }) =>
+            `flex items-center gap-2  font-medium text-[15px] p-2 rounded-md ${isActive ? 'shadow-xs' : ''} ${isActive ? "text-[#7575C6]" : "text-gray-500"} ${isActive ? "bg-white" : "bg-none"}`}>
+            <Goal size={18} /> <span>Goals</span>
+          </NavLink>
+
+          <NavLink to="/workspace/setting"  className={({ isActive }) =>
+            `flex items-center gap-2  font-medium text-[15px] p-2 rounded-md  ${isActive ? "text-[#7575C6]" : "text-gray-500"} 
+            ${isActive ? "bg-white" : "bg-none"} ${isActive ? 'shadow-xs' : ''}`}>
+            <Settings size={18} /> <span>Settings</span>
+          </NavLink>
         </div>
       </div>
 
@@ -55,18 +73,18 @@ const Sidebar = () => {
         </div>
 
         <div className='my-4 flex items-center gap-2'>
-          <FolderOpenDot className='text-amber-400' />
-           <h5 className='text-[#7f7f89] text-[14px] '>Aerotech Web design</h5>
+          <FolderOpenDot  size={19} className='text-amber-400' />
+          <h5 className='text-[#7f7f89] text-[14px] '>Aerotech Web design</h5>
         </div>
 
         <div className='my-4 flex items-center gap-2'>
-          <FolderOpenDot className='text-red-600' />
-           <h5 className='text-[#7f7f89] text-[14px] '>Climtown Web design</h5>
+          <FolderOpenDot size={19} className='text-red-600' />
+          <h5 className='text-[#7f7f89] text-[14px] '>Climtown Web design</h5>
         </div>
 
         <div className='my-4 flex items-center gap-2'>
-          <FolderOpenDot className='text-green-600' />
-           <h5 className='text-[#7f7f89] text-[14px] '>Uwo dashboard design</h5>
+          <FolderOpenDot size={19} className='text-green-600' />
+          <h5 className='text-[#7f7f89] text-[14px] '>Uwo dashboard design</h5>
         </div>
       </div>
 

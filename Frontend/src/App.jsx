@@ -10,6 +10,9 @@ import AuthProvider from './context/AuthContext'
 import { Toaster } from 'sonner'
 import Layout from './components/Layout'
 import Dashboard from './pages/Home/Dashboard'
+import Task from './pages/tasks/Task'
+import Goal from './pages/goals/Goal'
+import Setting from './pages/setting/Setting'
 
 
 
@@ -59,6 +62,21 @@ const App = () => {
         {
           path: 'dashboard',
           element: <Dashboard />
+        },
+
+        {
+          path: 'tasks',
+          element: <Task />
+        },
+
+        {
+          path: 'goals',
+          element: <Goal />
+        },
+
+        {
+          path: 'setting',
+          element: <Setting />
         }
       ]
     }
