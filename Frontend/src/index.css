@@ -22,6 +22,10 @@
   @apply cursor-pointer border border-gray-200 bg-[#212529] w-full h-11 text-[14px] flex items-center justify-center rounded-lg hover:bg-[#6C757D] duration-200
 }
 
+.create-Btn {
+  @apply cursor-pointer border border-gray-200 bg-[#212529] text-[14px] flex items-center justify-center rounded-md hover:bg-[#6C757D] duration-200 p-2 text-white gap-1  px-3
+}
+
 /* hide-scrollbar */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
