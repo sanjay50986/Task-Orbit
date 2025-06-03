@@ -14,7 +14,7 @@ const Board = () => {
                         />
                     </div>
 
-                    <button className='flex  text-[14px] font-medium items-center border px-4 p-2 rounded-md shadow-xs gap-2 cursor-pointer border-gray-300 '>
+                    <button className='flex text-[14px] font-medium items-center border px-4 p-2 rounded-md shadow-xs gap-2 cursor-pointer border-gray-300 '>
                         <FunnelX size={18} />
                         Filter
                     </button>
