@@ -17,7 +17,12 @@ const data = [
     color: '#A78BFA',
   },
 
- 
+  {
+    name: 'Uwo App Redesign',
+    tasks: 4,
+    color: '#A78BFA',
+  },
+
   
 ];
 
@@ -25,11 +30,11 @@ const ProjectTasksChart = () => {
   const maxTasks = Math.max(...data.map(item => item.tasks));
 
   return (
-    <div className="p-4 space-y-5 bg-white rounded-xl">
+    <div className="px-2 py-2  space-y-4 bg-white rounded-xl">
       {data.map((item, index) => (
         <div key={index}>
           {/* Progress Bar */}
-          <div className="w-full h-3 rounded-full mb-2 overflow-hidden bg-[#f3f4f6]">
+          <div className="w-full h-1.5 rounded-full mb-2 overflow-hidden bg-[#f3f4f6]">
             <div
               className="h-full rounded-full"
               style={{
@@ -41,14 +46,14 @@ const ProjectTasksChart = () => {
 
           {/* Label + Tasks Count */}
           <div className="flex items-center justify-between text-sm font-medium text-[#7f7f89]">
-            <div className="flex items-center space-x-2">
+            <div className="flex text-[13px] items-center space-x-2">
               <span
                 className="w-2.5 h-2.5 rounded-full"
                 style={{ backgroundColor: item.color }}
               ></span>
               <span>{item.name}</span>
             </div>
-            <span className="text-[#7f7f89]">{item.tasks} Tasks</span>
+            <span className="text-[#7f7f89] text-[13px]">{item.tasks} Tasks</span>
           </div>
         </div>
       ))}
