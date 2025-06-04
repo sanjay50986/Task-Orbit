@@ -49,7 +49,7 @@ const Board = () => {
                         <div className='mt-2.5 mb-1 bg-white  rounded-md'>
                             <div className='p-3  space-y-2.5'>
                                 <div className='flex items-center justify-between'>
-                                    <span className="bg-red-100 border border-red-400 px-3 py-1 
+                                    <span className="bg-red-100 border border-red-400 px-4 py-1 
                                     rounded-full text-[10px] text-red-600 font-medium">
                                         High
                                     </span>

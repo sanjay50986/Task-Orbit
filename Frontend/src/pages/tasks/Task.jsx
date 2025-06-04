@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Lists from './lists/Lists';
 import Board from './board/Board';
+import Calender from './calender/Calender';
 
 
 const Task = () => {
@@ -47,8 +48,9 @@ const Task = () => {
         <TabPanel>
             <Board/>
         </TabPanel>
-        <TabPanel>
 
+        <TabPanel>
+            <Calender/>
         </TabPanel>
         {/* <TabPanel>
 

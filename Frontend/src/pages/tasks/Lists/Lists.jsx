@@ -1,7 +1,11 @@
 import { ChevronUp, Ellipsis, FunnelX, Plus, Search } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
+import CreateTask from '../CreateTask'
 
 const Lists = () => {
+
+    const [openCreateTask, setOpenCreateTask] = useState(false)
+
     return (
         <div className='p-4 px-4'>
             <div className='flex sm:flex-row flex-col justify-between '>
@@ -20,11 +24,16 @@ const Lists = () => {
                     </button>
                 </div>
 
-                <button className='create-Btn  p-1.5 max-sm:mt-3 '>
+                <button onClick={() => setOpenCreateTask(true)} className='create-Btn  p-1.5 max-sm:mt-3 '>
                     <Plus size={18} />
                     Create task
                 </button>
             </div>
+
+            <CreateTask
+                closeCreateTask={() => setOpenCreateTask(false)}
+                createTask={openCreateTask}
+            />
 
             <div className='bg-[#f5f5f5] px-4 py-2 border border-gray-200 rounded-md my-4'>
                 <div className='flex items-center justify-between'>
@@ -70,7 +79,7 @@ const Lists = () => {
                                 <td className="py-3 px-4 text-start">Aerotech Web design</td>
                                 <td className="py-3 px-4 text-start">People</td>
                                 <td className="py-3 px-4 text-start">
-                                    <span className="bg-red-100 border border-red-400 px-2.5 py-1 
+                                    <span className="bg-red-100 border border-red-400 px-4 py-1 
                                     rounded-full text-[12px] text-red-600 font-medium">
                                         High
                                     </span>
