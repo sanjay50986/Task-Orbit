@@ -85,7 +85,7 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <TaskProvider>
+      <TaskProvider >
         <RouterProvider router={router} />
         <Toaster position='top-center' richColors duration={3000} />
       </TaskProvider>

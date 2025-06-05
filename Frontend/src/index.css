@@ -23,8 +23,19 @@
 }
 
 .create-Btn {
-  @apply cursor-pointer border border-gray-200 bg-[#212529] text-[14px] flex items-center justify-center rounded-md hover:bg-[#6C757D] duration-200 text-white gap-1  px-3
+  @apply cursor-pointer border border-gray-200 bg-[#212529] text-[12px] flex items-center justify-center rounded-md hover:bg-[#6C757D] duration-200 text-white gap-1  px-3
 }
+
+/* Hide scrollbars globally but allow scrolling */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 
 /* hide-scrollbar */
 .hide-scrollbar::-webkit-scrollbar {

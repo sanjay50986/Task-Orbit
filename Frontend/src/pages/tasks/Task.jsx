@@ -14,7 +14,7 @@ const Task = () => {
 
   return (
 
-    <div className=' w-full'>
+    <div className=' w-full '>
       <div className='p-4 px-4'>
         <h1 className='text-[20px] font-medium'>My tasks</h1>
         <h2 className='text-[13px] text-[#7f7f89] font-medium pt-1'>Manage and track your tasks effeciently</h2>
@@ -59,7 +59,7 @@ const Task = () => {
             </button>
           </div>
 
-          <button onClick={() => setOpenCreateTask(true)} className='create-Btn  p-1.5 max-sm:mt-3 '>
+          <button onClick={() => setOpenCreateTask(true)} className='create-Btn  p-2 max-sm:mt-3 '>
             <Plus size={18} />
             Create task
           </button>
