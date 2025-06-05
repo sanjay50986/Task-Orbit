@@ -13,6 +13,7 @@ import Dashboard from './pages/Home/Dashboard'
 import Task from './pages/tasks/Task'
 import Goal from './pages/goals/Goal'
 import Setting from './pages/setting/Setting'
+import TaskProvider from './context/TaskContext'
 
 
 
@@ -84,8 +85,10 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster position='top-center' richColors duration={3000} />
+      <TaskProvider>
+        <RouterProvider router={router} />
+        <Toaster position='top-center' richColors duration={3000} />
+      </TaskProvider>
     </AuthProvider>
   )
 }
