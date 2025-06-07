@@ -16,8 +16,8 @@ const Task = () => {
 
     <div className=' w-full '>
       <div className='p-4 px-4'>
-        <h1 className='text-[20px] font-medium'>My tasks</h1>
-        <h2 className='text-[13px] text-[#7f7f89] font-medium pt-1'>Manage and track your tasks effeciently</h2>
+        <h1 className='text-[18px] font-medium'>My tasks</h1>
+        <h2 className='text-[12px] text-[#7f7f89] font-medium pt-1'>Manage and track your tasks effeciently</h2>
       </div>
 
       <Tabs className="mt-1.5 overflow-auto">
@@ -44,51 +44,48 @@ const Task = () => {
 
         <div className=' px-4 py-4'>
           <div className='flex sm:flex-row flex-col justify-between '>
-          <div className='flex flex-row gap-3 '>
-            <div className='flex sm:w-[17rem] w-full border gap-2  p-1.5 shadow-xs px-4 items-center border-gray-300  rounded-md outline-none text-[14px] '>
-              <Search className='text-[#7f7f89]' size={18} />
-              <input
-                className='outline-none text-gray-600  w-full'
-                placeholder='Search task'
-              />
+            <div className='flex flex-row gap-3 '>
+              <div className='flex sm:w-[17rem] w-full border gap-2  p-1.5 shadow-xs px-4 items-center border-gray-300  rounded-md outline-none text-[14px] '>
+                <Search className='text-[#7f7f89]' size={18} />
+                <input
+                  className='outline-none text-gray-600  w-full'
+                  placeholder='Search task'
+                />
+              </div>
+
+              <button className='flex  text-[14px] font-medium items-center border px-4  p-1.5 rounded-md shadow-xs gap-2 cursor-pointer border-gray-300 '>
+                <FunnelX size={18} />
+                Filter
+              </button>
             </div>
 
-            <button className='flex  text-[14px] font-medium items-center border px-4  p-1.5 rounded-md shadow-xs gap-2 cursor-pointer border-gray-300 '>
-              <FunnelX size={18} />
-              Filter
+            <button onClick={() => setOpenCreateTask(true)} className='create-Btn  p-2 max-sm:mt-3 '>
+              <Plus size={18} />
+              Create task
             </button>
           </div>
-
-          <button onClick={() => setOpenCreateTask(true)} className='create-Btn  p-2 max-sm:mt-3 '>
-            <Plus size={18} />
-            Create task
-          </button>
-        </div>
         </div>
 
         <CreateTask
-        closeCreateTask={() => setOpenCreateTask(false)}
-        createTask={openCreateTask}
+          closeCreateTask={() => setOpenCreateTask(false)}
+          createTask={openCreateTask}
         />
-
-
-
-
         {/*-----Lists-----*/}
         <TabPanel>
           <Lists />
         </TabPanel>
 
+        {/*-----Board-----*/}
         <TabPanel>
           <Board />
         </TabPanel>
 
+
+        {/*-----Calender-----*/}
         <TabPanel>
           <Calender />
         </TabPanel>
-        {/* <TabPanel>
 
-        </TabPanel> */}
       </Tabs>
     </div>
   )

@@ -12,7 +12,7 @@ const Topbar = () => {
       </div>
 
       <div className='flex items-center gap-2'>
-        <button className='flex items-center py-1.5 border border-gray-300 gap-1.5 rounded-md px-3 cursor-pointer max-md:hidden'>
+        <button className='flex items-center py-1.5 border shadow-xs border-gray-300 gap-1.5 rounded-md px-3 cursor-pointer max-md:hidden'>
           <Inbox size={18} />
           <span className='text-[14px] font-medium'>Inbox</span>
         </button>

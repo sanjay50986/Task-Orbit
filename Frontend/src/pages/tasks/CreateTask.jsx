@@ -30,7 +30,7 @@ const CreateTask = ({ createTask, closeCreateTask }) => {
                         placeholder='Write task name'
                         className='w-full font-semibold text-2xl outline-none' />
 
-                    <div className='grid grid-cols-[140px_1fr] gap-y-7 mt-6 text-[14px] text-[#4B4F5C] font-medium'>
+                    <div className='grid grid-cols-[140px_1fr] gap-y-7 mt-6 text-[15px] text-[#4B4F5C] font-medium'>
                         <div className='flex items-center gap-2.5'>
                             <CircleDashed size={18} />
                             <span className='text-[14px]'>Status</span>

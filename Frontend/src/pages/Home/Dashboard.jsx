@@ -9,8 +9,8 @@ const Dashboard = () => {
 
   return (
     <div className='p-4 px-4 w-full'>
-      <h1 className='text-[20px] font-medium'>Lets start today, Bagus!</h1>
-      <h2 className='text-[13px] text-[#7f7f89] font-medium pt-1'><span className='text-gray-600'>8 pending</span> tasks across <span className='text-gray-600'>2 projects</span> today!</h2>
+      <h1 className='text-[18px] font-medium'>Lets start today, Bagus!</h1>
+      <h2 className='text-[12px] text-[#7f7f89] font-medium pt-1'><span className='text-gray-600'>8 pending</span> tasks across <span className='text-gray-600'>2 projects</span> today!</h2>
 
       <div className='grid xl:grid-cols-3 grid-cols-1  md:grid-cols-2 mt-4 gap-3.5'>
         {/**--Team Performance--- */}
