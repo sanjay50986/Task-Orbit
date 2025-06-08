@@ -62,7 +62,7 @@ const Goal = () => {
               </button>
             </div>
 
-            <button onClick={() => setOpenGoalModel(true)} className='create-Btn  p-2 max-sm:mt-3 '>
+            <button onClick={() => setOpenGoalModel(true)} className='create-Btn p-2 max-sm:mt-3 '>
               <Plus size={18} />
               Add goal
             </button>

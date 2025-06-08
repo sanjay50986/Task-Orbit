@@ -99,8 +99,8 @@ const CreateTask = ({ createTask, closeCreateTask }) => {
                     </div>
 
                     <div className='flex my-12 justify-end gap-3'>
-                        <button onClick={closeCreateTask} className='cursor-pointer border border-gray-200 p-2 rounded-lg text-[12px] hover:bg-gray-100 duration-200 font-medium px-4'>Cancel</button>
-                        <button className='cursor-pointer border border-gray-200 p-2 bg-[#212529] rounded-lg text-[12px] text-white hover:bg-[#6C757D]  duration-200 font-medium px-4'>Create Task</button>
+                        <button onClick={closeCreateTask} className='cancel-btn'>Cancel</button>
+                        <button className='create-Btn'>Create Task</button>
                     </div>
                 </div>
             </div>
