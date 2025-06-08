@@ -5,8 +5,8 @@ import GoalDoughnutChart from '@/components/goals/GoalDoughnutChart'
 
 const TeamGoal = () => {
   return (
-    <div className='flex w-full px-4 gap-4'>
-      <div className='border  border-gray-200 rounded-lg w-[70%] bg-[#f5f5f5]'>
+    <div className='flex flex-col max-md:flex-col-reverse md:flex-row w-full px-4 gap-4'>
+      <div className='border  border-gray-200 rounded-lg md:w-[70%] w-full bg-[#f5f5f5]'>
         {/*----------Main goal--------*/}
         <div className='bg-white px-4 py-4 rounded-lg'>
           <span className='text-green-600 text-[11px] border border-green-200 bg-green-100 px-3 py-1 font-medium rounded-full '>On track</span>
@@ -35,7 +35,7 @@ const TeamGoal = () => {
         </div>
 
         {/*----------Sub goal--------*/}
-        <div className='my-5 mx-10 px-4 py-4 rounded-lg bg-white border border-gray-200'>
+        <div className='my-5 md:mx-10 mx-3.5 px-4 py-4 rounded-lg bg-white border border-gray-200'>
           <span className='text-amber-500 text-[11px] border border-amber-200 bg-amber-100 px-3 py-1 font-medium rounded-full '>At risk</span>
           <h1 className='text-[13px] font-medium pt-3'>Finalize MVP for social media integration feature</h1>
           <span className='text-[11px] text-[#7f7f89]'>FY25 2025</span>
@@ -63,8 +63,8 @@ const TeamGoal = () => {
       </div>
 
 
-      <div className="border border-gray-200 rounded-lg w-[30%] bg-white">
-        <div className="border-b px-4 py-2 border-gray-200 flex justify-between items-center">
+      <div className="border border-gray-200 rounded-lg md:w-[30%] w-full  bg-white md:max-h-[320px]">
+        <div className="border-b px-4 py-3 border-gray-200 flex justify-between items-center">
           <h1 className="font-medium text-[14px]">Status goals update</h1>
           <Ellipsis className="text-[#7f7f89]" size={18} />
         </div>

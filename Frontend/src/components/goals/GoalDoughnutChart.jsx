@@ -25,6 +25,7 @@ const GoalDoughnutChart = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
       tooltip: {
@@ -37,35 +38,39 @@ const GoalDoughnutChart = () => {
 
   return (
     <>
-      <div className="relative">
-        <Doughnut data={data} options={options} width={100} height={100} />
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-sm text-gray-500">Total</span>
-          <span className="text-lg font-semibold text-[#151523]">15 Open Goals</span>
+      <div className="relative ">
+        <div className='flex items-center justify-center'>
+          <Doughnut data={data} options={options} height={120} />
+
+        </div>
+
+        <div className="absolute inset-0 flex flex-col top-16 items-center justify-center">
+          <span className="text-[12px] text-[#7f7f89]">Total</span>
+          <span className="text-[14px] font-medium text-[#151523]">15 Open Goals</span>
         </div>
       </div>
 
-      <div className="mt-4 space-y-2 text-sm text-[#151523]">
+      <div className="text-sm text-[#151523] mt-7 space-y-2.5">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-[#0BAF7C]"></span>
-            <span>On track</span>
+            <span className='font-medium text-[12px] md:text-[14px] text-[#7f7f89]'>On track</span>
           </div>
-          <span>12 Tasks</span>
+          <span className=' text-[11px] md:text-[13px] text-[#7f7f89]'>12 Tasks</span>
         </div>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-[#F6B426]"></span>
-            <span>At risk</span>
+            <span className='font-medium text-[12px] md:text-[14px] text-[#7f7f89]'>At risk</span>
           </div>
-          <span>8 Tasks</span>
+          <span className=' text-[11px] md:text-[13px] text-[#7f7f89]'>8 Tasks</span>
         </div>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-[#ED5E68]"></span>
-            <span>Off track</span>
+            <span className='font-medium text-[12px] md:text-[14px] text-[#7f7f89]'>Off track</span>
           </div>
-          <span>4 Tasks</span>
+          <span className=' text-[11px] md:text-[13px] text-[#7f7f89]'>4 Tasks</span>
         </div>
       </div>
     </>

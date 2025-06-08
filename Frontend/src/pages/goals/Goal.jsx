@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../../assets/profile.png'
-import { CalendarDays, FunnelX, Inbox, List, Plus, Search, SquareMenu, UserPen, UserRound, Users } from 'lucide-react'
+import { FunnelX, Inbox, List, Plus, Search, SquareMenu, UserPen, UserRound, Users } from 'lucide-react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import TeamGoal from './teamGoals/TeamGoal'
 import MyGoal from './myGoals/MyGoal'
+import CreateGoal from './CreateGoal'
 
 const Goal = () => {
+
+  const [openGoalModel, setOpenGoalModel] = useState(false)
   return (
     <div className=' w-full '>
       <div className='p-4 px-4 flex items-center justify-between'>
@@ -59,12 +62,18 @@ const Goal = () => {
               </button>
             </div>
 
-            <button className='create-Btn  p-2 max-sm:mt-3 '>
+            <button onClick={() => setOpenGoalModel(true)} className='create-Btn  p-2 max-sm:mt-3 '>
               <Plus size={18} />
               Add goal
             </button>
           </div>
         </div>
+
+        <CreateGoal
+          closeGoal={() => setOpenGoalModel(false)}
+          createGoal={openGoalModel}
+        />
+
 
         {/*-----Team Goals-----*/}
         <TabPanel>
