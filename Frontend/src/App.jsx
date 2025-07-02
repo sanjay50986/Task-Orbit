@@ -14,6 +14,7 @@ import Task from './pages/tasks/Task'
 import Goal from './pages/goals/Goal'
 import Setting from './pages/setting/Setting'
 import TaskProvider from './context/TaskContext'
+import Project from './pages/projects/Project'
 
 
 
@@ -78,6 +79,11 @@ const App = () => {
         {
           path: 'setting',
           element: <Setting />
+        }, 
+
+        {
+          path: 'project',
+          element: <Project/>
         }
       ]
     }

@@ -34,7 +34,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <ChevronsUpDown  className='text-[#7f7f89]' size={16} />
+          <ChevronsUpDown className='text-[#7f7f89]' size={16} />
         </div>
 
         <h3 className='text-[#7f7f89] pt-4 text-[14px] font-medium '>GENERAL</h3>
@@ -51,12 +51,12 @@ const Sidebar = () => {
           ><ClipboardList size={16} /> <span>My tasks</span>
           </NavLink>
 
-          <NavLink to="/workspace/goals"  className={({ isActive }) =>
+          <NavLink to="/workspace/goals" className={({ isActive }) =>
             `flex items-center gap-2  font-medium text-[14px] p-2 rounded-md ${isActive ? 'shadow-xs' : ''} ${isActive ? "text-[#7575C6]" : "text-gray-500"} ${isActive ? "bg-white" : "bg-none"}`}>
             <Goal size={16} /> <span>Goals</span>
           </NavLink>
 
-          <NavLink to="/workspace/setting"  className={({ isActive }) =>
+          <NavLink to="/workspace/setting" className={({ isActive }) =>
             `flex items-center gap-2  font-medium text-[14px] p-2 rounded-md  ${isActive ? "text-[#7575C6]" : "text-gray-500"} 
             ${isActive ? "bg-white" : "bg-none"} ${isActive ? 'shadow-xs' : ''}`}>
             <Settings size={16} /> <span>Settings</span>
@@ -72,20 +72,12 @@ const Sidebar = () => {
           <Plus className='text-[#7f7f89]' size={20} />
         </div>
 
-        <div className='my-4 flex items-center gap-2'>
-          <FolderOpenDot  size={19} className='text-amber-400' />
-          <h5 className='text-[#7f7f89] text-[14px] '>Aerotech Web design</h5>
-        </div>
+        <NavLink to="/workspace/project" className={({ isActive }) =>
+          `flex items-center gap-2  font-medium text-[14px] p-2 rounded-md mt-2  text-gray-500
+            ${isActive ? "bg-white" : "bg-none"} ${isActive ? 'shadow-xs' : ''}`}>
+          <FolderOpenDot size={20} className='text-amber-400' /> <span>Aerotech Web design</span>
+        </NavLink>
 
-        <div className='my-4 flex items-center gap-2'>
-          <FolderOpenDot size={19} className='text-red-600' />
-          <h5 className='text-[#7f7f89] text-[14px] '>Climtown Web design</h5>
-        </div>
-
-        <div className='my-4 flex items-center gap-2'>
-          <FolderOpenDot size={19} className='text-green-600' />
-          <h5 className='text-[#7f7f89] text-[14px] '>Uwo dashboard design</h5>
-        </div>
       </div>
 
     </div>

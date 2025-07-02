@@ -24,7 +24,7 @@ const Profile = () => {
                     </div>
 
                     <div className='px-4'>
-                        <div className='border border-gray-200 sm:py-2 px-4 rounded-lg flex sm:flex-row flex-col items-center  justify-between mt-6 max-sm: space-y-4 py-4'>
+                        <div className='border border-gray-200 sm:py-2 px-4 rounded-lg flex sm:flex-row flex-col items-center  justify-between mt-6 max-sm:space-y-4 py-4'>
                             <div className='flex sm:flex-row flex-col gap-2.5 items-center '>
                                 <div className='bg-gray-100 rounded-full p-5 border border-gray-200 '>
                                     <User className='w-[30px] h-[30px]' />
