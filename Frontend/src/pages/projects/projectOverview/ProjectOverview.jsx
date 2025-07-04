@@ -7,8 +7,8 @@ import Updates from './Updates'
 
 const ProjectOverview = () => {
     return (
-        <div className='flex w-full  '>
-            <div className='w-[70%] space-y-4 p-4 px-4 border-r border-gray-200'>
+        <div className='flex sm:flex-row flex-col  w-full  '>
+            <div className='sm:w-[70%] space-y-4 p-4 px-4 border-r border-gray-200'>
                 <div className='border border-gray-200  rounded-xl h-[250px]'>
                     <div className='border-b px-4 py-3 border-gray-200 flex justify-between items-center'>
                         <h1 className='font-medium text-[14px]'>Project description</h1>
@@ -60,7 +60,7 @@ const ProjectOverview = () => {
                 </div>
             </div>
 
-            <div className='w-[30%] '>
+            <div className='sm:w-[30%] '>
                 <h1 className='text-[16px] font-medium px-4 pt-4'>History</h1>
 
                 <Tabs className="mt-1.5 overflow-auto">

@@ -16,7 +16,7 @@ const CreateTask = ({ createTask, closeCreateTask }) => {
             <div
                 className={`
           fixed top-0 right-0 bottom-0 z-20 left-auto bg-white shadow-xs
-          transform transition-transform duration-500 ease-in-out xl:w-[30%] lg:w-[40%] sm:w-[60%] w-full
+          transform transition-transform duration-500 ease-in-out xl:w-[30%] lg:w-[40%] sm:w-[60%] w-[95%]
           ${createTask ? "translate-x-0" : "translate-x-full"}
           overflow-y-auto max-h-screen hide-scrollbar 
         `}>
@@ -30,7 +30,7 @@ const CreateTask = ({ createTask, closeCreateTask }) => {
                         placeholder='Write task name'
                         className='w-full font-semibold text-2xl outline-none' />
 
-                    <div className='grid grid-cols-[140px_1fr] gap-y-7 mt-6 text-[15px] text-[#4B4F5C] font-medium'>
+                    <div className='grid sm:grid-cols-[140px_1fr] grid-cols-2 gap-y-5 mt-6 text-[15px] text-[#4B4F5C] font-medium'>
                         <div className='flex items-center gap-2.5'>
                             <CircleDashed size={18} />
                             <span className='text-[14px]'>Status</span>
@@ -81,7 +81,7 @@ const CreateTask = ({ createTask, closeCreateTask }) => {
 
                         <div className='flex items-center gap-2.5'>
                             <FolderOpenDot size={18} />
-                            <span>Priority</span>
+                            <span>Project</span>
                         </div>
 
                         <select className='border border-gray-300 px-2 text-[14px] font-medium py-1 shadow-xs rounded-md outline-none w-[9rem]'>

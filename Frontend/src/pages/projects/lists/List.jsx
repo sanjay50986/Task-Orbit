@@ -1,11 +1,9 @@
-import { ChevronUp, Ellipsis, FunnelX, Plus, Search } from 'lucide-react'
-import React, { useState } from 'react'
-import CreateTask from '../CreateTask'
+import { ChevronUp, Ellipsis, Plus } from 'lucide-react'
+import React from 'react'
 
-const Lists = () => {
-
+const List = () => {
     return (
-        <div className='px-4 '>
+        <div className='px-4 mt-4'>
             <div className='bg-[#f5f5f5] px-4 py-2 border border-gray-200 rounded-md mb-3'>
                 <div className='flex items-center justify-between'>
                     <div className='flex  gap-3 items-center'>
@@ -31,7 +29,6 @@ const Lists = () => {
                                 <th className="font-medium py-3 px-4 text-start pl-4">Task name</th>
                                 <th className="font-medium py-3 px-4 text-start">Due date</th>
                                 <th className="font-medium py-3 px-4 text-start">Progress</th>
-                                <th className="font-medium py-3 px-4 text-start">Projects</th>
                                 <th className="font-medium py-3 px-4 text-start">People</th>
                                 <th className="font-medium py-3 px-4 text-start">Priority</th>
                                 <th className="font-medium py-3 px-4 text-center">
@@ -47,7 +44,6 @@ const Lists = () => {
                                 <td className="py-3 px-4 text-start truncate max-w-[60px] whitespace-nowrap overflow-hidden">Design homepage layout</td>
                                 <td className="py-3 px-4 text-start">Mon, 12 Jan 2025</td>
                                 <td className="py-3 px-4 text-start">0%</td>
-                                <td className="py-3 px-4 text-start">Aerotech Web design</td>
                                 <td className="py-3 px-4 text-start">People</td>
                                 <td className="py-3 px-4 text-start">
                                     <span className="bg-red-100 border border-red-400 px-4 py-1 
@@ -69,4 +65,4 @@ const Lists = () => {
     )
 }
 
-export default Lists
+export default List

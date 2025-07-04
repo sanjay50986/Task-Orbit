@@ -3,12 +3,12 @@ import Logo from '../../assets/Logo.png'
 
 const Header = () => {
     return (
-        <nav>
-            {/* <img
-                className="w-[180px] p-6"
+        <nav className='p-6'>
+            <img
+                className="h-6.5"
                 src={Logo}
-                alt="DevBoard Logo"
-            /> */}
+                alt="Logo"
+            />
 
         </nav>
     )

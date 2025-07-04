@@ -111,7 +111,7 @@ const VerifyOtp = () => {
     }, [timer])
 
     return (
-        <div className='flex justify-center items-center h-[80vh] max-sm:mx-4'>
+        <div className='flex justify-center items-center max-sm:mx-4 h-[80vh]'>
             <div className='bg-white rounded-2xl p-2 w-[460px]'>
                 <div className='p-2  space-y-3'>
 
@@ -143,12 +143,12 @@ const VerifyOtp = () => {
                         {timer > 0 ? `Resend in ${timer}s` : "Resend OTP"}
                     </button>
                     <h4 className='text-center text-gray-600 text-[14px] pt-2 font-medium'>Or continue with</h4>
-                    <button className='primary-btn'> <FaGoogle /><span className=' font-medium'>Sign up with Google</span></button>
+                    <button className='primary-btn space-x-3'> <FaGoogle  /><span className=' font-medium'>Sign up with Google</span></button>
 
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
-                    <h5 className='text-gray-600 text-center text-[14px]'>Enter wrong email? <Link to="/auth/register" className='text-[#7575C6]'>Change</Link></h5>
+                    <h5 className='text-gray-600 text-center text-[14px]'>Enter wrong email? <Link to="/auth/register" className='text-[#7575C6] font-medium'>Change</Link></h5>
 
                 </div>
 

@@ -4,8 +4,10 @@ import { Outlet } from 'react-router-dom'
 
 const RegisterLayout = () => {
     return (
-        <div className="min-h-screen flex flex-col">
-            <Header />
+        <div className="flex flex-col ">
+            <div className='border-b border-gray-200'>
+                <Header />
+            </div>
             <main className="flex-1">
                 <Outlet />
             </main>

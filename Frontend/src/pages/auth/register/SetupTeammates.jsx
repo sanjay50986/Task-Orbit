@@ -4,7 +4,7 @@ import { Plus } from 'lucide-react'
 
 const SetupTeammates = ({onContinue}) => {
   return (
-    <div className='flex justify-center items-center h-[80vh] max-sm:mx-4'>
+    <div className='flex justify-center items-center  max-sm:mx-4'>
       <div className='bg-white rounded-2xl p-2'>
         <div className='p-2  space-y-3'>
 

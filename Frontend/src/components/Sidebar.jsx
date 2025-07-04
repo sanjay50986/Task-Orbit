@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from "../assets/Logo.png"
 import { ChevronDown, ChevronsUpDown, ClipboardList, FolderOpenDot, Goal, House, PanelsTopLeft, Plus, Search, Settings, User } from 'lucide-react'
 import { NavLink } from 'react-router'
+import CreateProject from '@/pages/projects/CreateProject'
 
 const Sidebar = () => {
+
+  const [createProjectModel, setCreateProjectModel] = useState(false)
   return (
     <div className='py-2 space-y-4' >
       <div className='px-3'>
-        <div className='flex justify-between items-center'>
-          <img src={Logo} alt='logo' className='w-[45px] h-[45px]' />
+        <div className='flex py-2.5 justify-between items-center'>
+          <img src={Logo} alt='logo' className='object-contain h-6' />
           <PanelsTopLeft className='text-[#7f7f89]' size={20} />
         </div>
 
@@ -69,8 +72,16 @@ const Sidebar = () => {
       <div className='px-3.5 '>
         <div className='flex items-center justify-between'>
           <h3 className='text-[#7f7f89] text-[14px] font-medium'>PROJECTS</h3>
-          <Plus className='text-[#7f7f89]' size={20} />
+          <button className='cursor-pointer' onClick={() => setCreateProjectModel(true)}>
+            <Plus className='text-[#7f7f89]' size={20} />
+
+          </button>
         </div>
+
+         <CreateProject
+              closeCreateProject={() => setCreateProjectModel(false)}
+              createProject={createProjectModel}
+            />
 
         <NavLink to="/workspace/project" className={({ isActive }) =>
           `flex items-center gap-2  font-medium text-[14px] p-2 rounded-md mt-2  text-gray-500
@@ -79,6 +90,7 @@ const Sidebar = () => {
         </NavLink>
 
       </div>
+
 
     </div>
   )

@@ -80,7 +80,7 @@ const RegisterStepOne = () => {
                 <div className='p-2  space-y-3'>
                     <h1 className='text-[20px] font-medium'>Get Started now!</h1>
                     <h2 className='text-gray-600 text-[14px]'>Register with your email, and we will send you a codes for authentication, and you can create your account!</h2>
-                    <button className='primary-btn'> <FaGoogle /><span className=' font-medium'>Sign up with Google</span></button>
+                    <button className='primary-btn space-x-3'> <FaGoogle /><span className=' font-medium'>Sign up with Google</span></button>
                     <h4 className='text-center text-gray-600 text-[14px] font-medium pt-2'>Or continue with</h4>
                     <TextInput
                         label="Email"
@@ -95,7 +95,7 @@ const RegisterStepOne = () => {
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
-                    <h5 className='text-gray-600 text-center text-[14px]'>Already have an account? <Link to="/auth/login" className='text-[#11326d]'>Login</Link></h5>
+                    <h5 className='text-gray-600 text-center text-[14px]'>Already have an account? <Link to="/auth/login" className='text-[#7575C6] font-medium'>Login</Link></h5>
                 </div>
             </div>
         </div>

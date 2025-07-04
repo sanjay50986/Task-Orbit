@@ -1,6 +1,6 @@
 import React from 'react';
 import { NotepadText, BriefcaseBusiness, BookText, Users } from 'lucide-react';
-import Logo from '../../assets/Logo.png'
+import Logo from '../../assets/LogoIcon.png'
 
 const steps = [
     { id: 0, title: "Create an account", icon: NotepadText },
@@ -12,7 +12,7 @@ const steps = [
 const ProgressSidebar = ({ currentStep }) => {
     return (
         <div>
-            <img src={Logo} className='w-[65px] h-[63px] mt-4 ml-2' />
+            <img src={Logo} className='h-11 mt-4 ml-3' />
 
             <div className='border-b p-4 border-gray-200'>
                 <h1 className='text-[20px] font-medium'>Create account</h1>
