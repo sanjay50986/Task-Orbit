@@ -93,7 +93,7 @@ const App = () => {
     <AuthProvider>
       <TaskProvider >
         <RouterProvider router={router} />
-        <Toaster position='top-center' richColors duration={3000} />
+        <Toaster position='bottom-right' richColors duration={3000} />
       </TaskProvider>
     </AuthProvider>
   )

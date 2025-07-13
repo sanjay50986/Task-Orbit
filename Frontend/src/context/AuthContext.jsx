@@ -18,7 +18,6 @@ const AuthProvider = ({ children }) => {
     
 
     const signUpApi = async () => {
-
         try {
             const response = await fetch(`${baseUrl}/auth/${authApi.SIGN_UP}`, {
                 method: "POST",
@@ -62,7 +61,16 @@ const AuthProvider = ({ children }) => {
                 setPassword,
                 setCompany,
                 setIndustry,
-                setRole
+                setRole,
+                firstName,
+                lastName,
+                role,
+                industry,
+                company,
+                password,
+                phoneNumber,
+                role,
+
             }}
         >
             {children}

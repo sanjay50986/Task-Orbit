@@ -8,10 +8,10 @@ const Sidebar = () => {
 
   const [createProjectModel, setCreateProjectModel] = useState(false)
   return (
-    <div className='py-2 space-y-4' >
+    <div className='py-2 space-y-4 max-' >
       <div className='px-3'>
         <div className='flex py-2.5 justify-between items-center'>
-          <img src={Logo} alt='logo' className='object-contain h-6' />
+          <img src={Logo} alt='logo' className='object-contain h-6.5' />
           <PanelsTopLeft className='text-[#7f7f89]' size={20} />
         </div>
 

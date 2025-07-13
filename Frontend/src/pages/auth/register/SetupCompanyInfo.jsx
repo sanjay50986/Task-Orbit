@@ -49,7 +49,7 @@ const SetupCompanyInfo = ({ onContinue }) => {
                     </select>
                 </div>
 
-                <button onClick={signUpApi} className='secondary-btn text-white mt-3'>
+                <button onClick={onContinue} className='secondary-btn text-white mt-3'>
                     Continue
                 </button>
 

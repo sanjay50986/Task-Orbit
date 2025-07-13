@@ -11,7 +11,7 @@ import { toast } from 'sonner'
 
 const rightSlider = () => {
 
-  const {email, firstName, password, company, role, industry, phoneNumber, lastName} = useAuthContext()
+  const { email, firstName, password, phoneNumber, lastName, role, industry, company } = useAuthContext()
 
   const setups = [
     StepProfileInfo,
@@ -26,10 +26,17 @@ const rightSlider = () => {
 
 
   const next = () => {
-    // if(!email || !firstName || !lastName || !password || !phoneNumber) {
-    //   return toast.error("All fields are required")
-    // }
+    if (currentStep === 0) {
+      if (!email || !firstName || !lastName || !password || !phoneNumber) {
+        return toast.info("Please complete your profile")
+      }
+    }
 
+    if (currentStep == 1) {
+      if (!role || !industry || !company) {
+        return toast.info("Add your company details")
+      }
+    }
 
     if (currentStep < setups.length - 1) {
       setCurrentStep(currentStep + 1)

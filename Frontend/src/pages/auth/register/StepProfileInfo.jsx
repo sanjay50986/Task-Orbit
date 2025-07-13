@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import { User, Images, Eye, EyeOff } from 'lucide-react';
 import TextInput from '@/components/textInput/TextInput';
-import { authApi } from '@/services/authAPI';
-import { baseUrl } from '@/services/baseUrl';
 import { useAuthContext } from '@/context/AuthContext';
 
 const StepProfileInfo = ({onContinue}) => {
 
     const [showPassword, setShowPassword] = useState(false)
-    const {setEmail, setfirstName, setlastName, setPhoneNumber, setPassword, signUpApi} = useAuthContext()
-    
+    const {setEmail, 
+        setfirstName, 
+        setlastName, 
+        setPhoneNumber, 
+        setPassword,
+    } = useAuthContext()
+
     return (
         <div className='bg-white p-4 rounded-2xl space-y-2 lg:w-[550px] sm:w-[450px] py-6 px-4.5' >
             <h1 className='text-[22px] font-medium '>Complete your information</h1>

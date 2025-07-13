@@ -57,11 +57,6 @@ const SetupWorkspace = ({onContinue}) => {
                 </div>
 
                 <div className='flex justify-between items-center gap-4 mt-14'>
-
-                    <button className='primary-btn text-black px-4 py-2 text-sm'>
-                        Skip for now
-                    </button>
-
                     <button onClick={onContinue} className='secondary-btn text-white px-4 py-2 text-sm'>
                         Continue
                     </button>
