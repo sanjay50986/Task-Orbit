@@ -8,6 +8,11 @@ import { OtpModel } from "../models/otp.model.js";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
+// Generate JWT token
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+};
+
 // Google Login
 export const googleLogin = async (req, res) => {
     const { token } = req.body;
@@ -215,15 +220,13 @@ export const signUp = async (req, res) => {
             role
         })
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
-
         await user.save();
 
         return res.status(STATUS_CODE.CREATED).json({
             success: true,
             message: "Signup created successfully",
             user,
-            token
+            token: generateToken(user._id)
         })
 
     } catch (error) {
@@ -259,19 +262,15 @@ export const login = async (req, res) => {
             });
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-            expiresIn: '7d'
-        });
 
         return res.status(STATUS_CODE.OK).json({
             success: true,
             message: "Login successful",
-            token,
+            token: generateToken(user._id),
             user: {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-
             }
         });
 

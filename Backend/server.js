@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors' 
 import {connectDB} from './config/db.js';
 import { authRoutes } from './routes/auth.routes.js';
+import { workspaceRoutes } from './routes/workspace.routes.js';
 
 dotenv.config();
 const port = process.env.PORT || 8000
@@ -20,6 +21,7 @@ app.use(express.json())
 connectDB()
 
 app.use("/api/auth", authRoutes)
+app.use("/api/workspace", workspaceRoutes)
 
 
 
