@@ -47,11 +47,11 @@ export const getWorkspace = async (req, res) => {
   try {
     const workspace = await WorkspaceModel.find({ owner: id });
 
-    if(!workspace) {
+    if (!workspace) {
       return res.status(STATUS_CODE.BAD_REQUEST).json({
         success: false,
-        message: "Workspace not found"
-      })
+        message: "Workspace not found",
+      });
     }
 
     return res.status(STATUS_CODE.OK).json({
@@ -70,5 +70,39 @@ export const getWorkspace = async (req, res) => {
 
 // deleteWorkpace
 export const deleteWorkspace = async (req, res) => {
- 
+  try {
+    const workspaceId = req.params.id;
+    const userId = req.user;
+
+    console.log(userId)
+
+    const workspace = await WorkspaceModel.findById(workspaceId);
+
+    if (!workspace) {
+      return res.status(STATUS_CODE.BAD_REQUEST).json({
+        succes: false,
+        message: "Workspace not found",
+      });
+    }
+
+    if (workspace.owner.toString() !== userId) {
+      return res.status(STATUS_CODE.UNAUTHORIZED).json({
+        succe: false,
+        message: "You are not allowed to delete this workspace",
+      });
+    }
+
+    await WorkspaceModel.findByIdAndDelete(id);
+
+    return res.status(STATUS_CODE.OK).json({
+      succe: true,
+      message: "Workspace deleted!",
+    });
+  } catch (error) {
+      console.error("Error deleting workspace:", error);
+      res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      message: "Server error while deleting workspace",
+    });
+  }
 };

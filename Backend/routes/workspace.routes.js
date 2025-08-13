@@ -6,4 +6,4 @@ export const workspaceRoutes = express.Router()
 
 workspaceRoutes.post("/createWorkspace", verifyToken, createWorkSpace)
 workspaceRoutes.get("/getWorkspace/:id", verifyToken, getWorkspace)
-// workspaceRoutes.delete("/deleteWorkspace/:workpaceId", verifyToken, deleteWorkspace)
+workspaceRoutes.delete("/deleteWorkspace/:id", verifyToken, deleteWorkspace)
