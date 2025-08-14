@@ -19,7 +19,7 @@ export const verifyToken = async (req, res, next) => {
         if (!user) {
             return res
                 .status(STATUS_CODE.UNAUTHORIZED)
-                .json({ message: "Not authorized, user not found" });
+                .json({ message: "Not authorized, user not found!" });
         }
 
         req.user = user;
