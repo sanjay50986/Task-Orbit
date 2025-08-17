@@ -20,6 +20,8 @@ export const createWorkSpace = async (req, res) => {
       owner: req.user._id,
     });
 
+    console.log(workspace)
+
     return res.status(STATUS_CODE.CREATED).json({
       succes: true,
       message: "Workspace created successfully",
@@ -35,7 +37,8 @@ export const createWorkSpace = async (req, res) => {
 
 // workspaceData
 export const getWorkspace = async (req, res) => {
-  const { id } = req.params;
+  const id = req.user;
+  console.log(id)
 
   if (!id) {
     return res.status(STATUS_CODE.BAD_REQUEST).json({

@@ -5,5 +5,5 @@ import { createWorkSpace, deleteWorkspace, getWorkspace } from "../controllers/w
 export const workspaceRoutes = express.Router()
 
 workspaceRoutes.post("/createWorkspace", verifyToken, createWorkSpace)
-workspaceRoutes.get("/getWorkspace/:id", verifyToken, getWorkspace)
+workspaceRoutes.get("/getWorkspace/", verifyToken, getWorkspace)
 workspaceRoutes.delete("/deleteWorkspace/:id", verifyToken, deleteWorkspace)

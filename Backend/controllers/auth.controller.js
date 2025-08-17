@@ -10,7 +10,7 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Generate JWT token
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 };
 
 // Google Login
@@ -226,6 +226,7 @@ export const signUp = async (req, res) => {
             success: true,
             message: "Signup created successfully",
             user,
+            id: user._id,
             token: generateToken(user._id)
         })
 
@@ -266,12 +267,10 @@ export const login = async (req, res) => {
         return res.status(STATUS_CODE.OK).json({
             success: true,
             message: "Login successful",
+            user: user._id,
+            user,
             token: generateToken(user._id),
-            user: {
-                id: user._id,
-                name: user.name,
-                email: user.email,
-            }
+
         });
 
     } catch (error) {
