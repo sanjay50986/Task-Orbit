@@ -1,5 +1,8 @@
 import { WorkspaceModel } from "../models/workspace.model.js";
 import { STATUS_CODE } from "../utils/statusCode.js";
+import { UserModel } from "../models/user.model.js";
+import { inviteMemberEmail } from "../utils/sendEmail.js";
+
 
 // Create Workspace
 export const createWorkSpace = async (req, res) => {
@@ -119,5 +122,60 @@ export const updateWorkspace = async (req, res) => {
       message: "Error updating workspace",
       error: error.message,
     });
+  }
+};
+
+export const inviteMemberToWorkspace = async (req, res) => {
+  try {
+    const { workspaceId } = req.params;
+    const { email } = req.body;
+
+    const workspace = await WorkspaceModel.findById(workspaceId);
+    if (!workspace) {
+      return res.status(STATUS_CODE.BAD_REQUEST).json({
+        success: false,
+        message: "Workspace not found",
+      });
+    }
+
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res
+        .status(STATUS_CODE.BAD_REQUEST)
+        .json({ success: false, message: "User with this email not found" });
+    }
+
+    const existingMember = workspace.members.find(
+      (member) => member.email === email
+    );
+    if (existingMember) {
+      return res.status(400).json({
+        success: false,
+        message: "This user is already a member of the workspace",
+      });
+    }
+
+    workspace.members.push({
+      userId: user._id,
+      email: user.email, 
+      role: "member", 
+      status: "invited",
+    });
+    await workspace.save();
+
+    const inviteLink = `http://localhost:8000/invite/accept/${workspaceId}?email=${email}`
+
+    await inviteMemberEmail(email, workspace.workspaceName, inviteLink)
+
+    res.status(STATUS_CODE.OK).json({
+      success: true,
+      message: "Invitation sent successfully",
+      workspace,
+    });
+  } catch (error) {
+    console.error("Error inviting member:", error);
+    res
+      .status(STATUS_CODE.INTERNAL_SERVER_ERROR)
+      .json({ success: false, message: "Server error" });
   }
 };
