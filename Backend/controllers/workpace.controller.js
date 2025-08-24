@@ -3,24 +3,23 @@ import { STATUS_CODE } from "../utils/statusCode.js";
 
 // Create Workspace
 export const createWorkSpace = async (req, res) => {
-  const { workspaceName, workSpaceDescription, workSpaceIcon } = req.body;
-
-  if (!workspaceName || !workSpaceDescription) {
-    return res.status(STATUS_CODE.BAD_REQUEST).json({
-      succes: false,
-      message: "Workspace name and description are required",
-    });
-  }
+  const userId = req.user.id;
 
   try {
+    const { workspaceName, workSpaceDescription, workSpaceIcon } = req.body;
+    if (!workspaceName || !workSpaceDescription) {
+      return res.status(STATUS_CODE.BAD_REQUEST).json({
+        succes: false,
+        message: "Workspace name and description are required",
+      });
+    }
+
     const workspace = await WorkspaceModel.create({
       workspaceName,
       workSpaceDescription,
       workSpaceIcon: workSpaceIcon || null,
-      owner: req.user._id,
+      owner: userId,
     });
-
-    console.log(workspace)
 
     return res.status(STATUS_CODE.CREATED).json({
       succes: true,
@@ -36,11 +35,9 @@ export const createWorkSpace = async (req, res) => {
 };
 
 // workspaceData
-export const getWorkspace = async (req, res) => {
-  const id = req.user;
-  console.log(id)
-
-  if (!id) {
+export const getAllWorkspace = async (req, res) => {
+  const userId = req.user.id;
+  if (!userId) {
     return res.status(STATUS_CODE.BAD_REQUEST).json({
       success: false,
       message: "user ID is required!",
@@ -48,7 +45,7 @@ export const getWorkspace = async (req, res) => {
   }
 
   try {
-    const workspace = await WorkspaceModel.find({ owner: id });
+    const workspace = await WorkspaceModel.find({ owner: userId });
 
     if (!workspace) {
       return res.status(STATUS_CODE.BAD_REQUEST).json({
@@ -74,38 +71,53 @@ export const getWorkspace = async (req, res) => {
 // deleteWorkpace
 export const deleteWorkspace = async (req, res) => {
   try {
-    const workspaceId = req.params.id;
-    const userId = req.user;
+    await WorkspaceModel.findByIdAndDelete(req.params.id);
 
-    console.log(userId)
+    return res.status(STATUS_CODE.OK).json({
+      succes: true,
+      message: "Workspace deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error deleting workspace:", error);
+    res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      message: "Server error while deleting workspace",
+    });
+  }
+};
 
-    const workspace = await WorkspaceModel.findById(workspaceId);
+export const updateWorkspace = async (req, res) => {
+  try {
+    const { workspaceName, workSpaceDescription, workSpaceIcon } = req.body;
+    const updatedWorkspace = await WorkspaceModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        workspaceName,
+        workSpaceDescription,
+        workSpaceIcon: workSpaceIcon || null,
+      },
+      {
+        new: true,
+      }
+    );
 
-    if (!workspace) {
+    if (!updatedWorkspace) {
       return res.status(STATUS_CODE.BAD_REQUEST).json({
-        succes: false,
+        success: false,
         message: "Workspace not found",
       });
     }
 
-    if (workspace.owner.toString() !== userId) {
-      return res.status(STATUS_CODE.UNAUTHORIZED).json({
-        succe: false,
-        message: "You are not allowed to delete this workspace",
-      });
-    }
-
-    await WorkspaceModel.findByIdAndDelete(id);
-
-    return res.status(STATUS_CODE.OK).json({
-      succe: true,
-      message: "Workspace deleted!",
+    return res.status(200).json({
+      success: true,
+      message: "Workspace updated successfully",
+      workspace: updatedWorkspace,
     });
   } catch (error) {
-      console.error("Error deleting workspace:", error);
-      res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+    return res.status(500).json({
       success: false,
-      message: "Server error while deleting workspace",
+      message: "Error updating workspace",
+      error: error.message,
     });
   }
 };
