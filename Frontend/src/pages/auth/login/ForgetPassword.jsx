@@ -15,12 +15,18 @@ const ForgetPassword = () => {
     const [password, setPassword] = useState("")
     const [loading, setloading] = useState(false)
     const navigate = useNavigate()
+      const [error, setError] = useState("");
+      const [passwordError, setPasswordError] = useState("");
 
 
     const forgetPasswordApi = async () => {
 
-        if (!email || !password) {
-            return toast.error("Email and new password required")
+        if (!email) {
+          return setError("Email is required");
+        }
+
+        if (!password) {
+          return setPasswordError("Password is required");
         }
         try {
             setloading(true)

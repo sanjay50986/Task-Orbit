@@ -69,8 +69,6 @@ const AuthProvider = ({ children }) => {
                 company,
                 password,
                 phoneNumber,
-                role,
-
             }}
         >
             {children}

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { ENUM } from "../utils/enum";
+import { ENUM } from "../utils/enum.js";
 
 const projectSchema = new mongoose.Schema(
   {
@@ -31,7 +31,7 @@ const projectSchema = new mongoose.Schema(
 
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      rwf: "User",
+      ref: "User",
       required: true,
     },
 
@@ -42,11 +42,11 @@ const projectSchema = new mongoose.Schema(
     },
 
     dueDate: {
-      tyep: new Date(),
+      type: Date
     },
 
     dueTime: {
-      tyep: new Date(),
+      type: Date
     },
   },
 
@@ -54,3 +54,5 @@ const projectSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+export const ProjectModel = mongoose.model("Project", projectSchema)
