@@ -12,13 +12,14 @@ const RegisterStepOne = () => {
 
     const { email, setEmail } = useAuthContext()
     const [loader, setLoader] = useState(false)
+    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
     const sendOtpApi = async () => {
 
         if(!email) {
-            return toast.error("Email is required")
+            return setError("Email is required")
         }
         try { 
             setLoader(true)
@@ -87,6 +88,7 @@ const RegisterStepOne = () => {
                         placeholder="Enter your email"
                         type="email"
                         onChange={(e) => setEmail(e.target.value)}
+                        error={error}
                     />
 
                     <button disabled={loader} onClick={sendOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{

@@ -4,12 +4,11 @@ import { Plus } from 'lucide-react'
 
 const SetupTeammates = ({onContinue}) => {
   return (
-    <div className='flex justify-center items-center  max-sm:mx-4'>
+    <div className='flex justify-center items-center  max-sm:mx-4 w-[460px]'>
       <div className='bg-white rounded-2xl p-2'>
         <div className='p-2  space-y-3'>
-
           <h1 className='text-[20px] font-medium'>Add your teammates</h1>
-          <h2 className='text-gray-600 text-[14px]'>Encourage your members or friends to collaborate on your <br /> projects and tasks, the more the better</h2>
+          <h2 className='text-gray-600 text-[14px]'>Encourage your members or friends to collaborate on your  projects and tasks, the more the better</h2>
 
           <div className='space-y-1.5'>
             <TextInput

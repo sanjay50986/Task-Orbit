@@ -14,6 +14,7 @@ const VerifyOtp = () => {
     const [otp, setOtp] = useState("")
     const [loader, setloader] = useState(false)
     const [timer, setTimer] = useState(0)
+    const [error, setError] = useState("")
     const { email } = useAuthContext()
     const navigate = useNavigate()
 
@@ -42,7 +43,7 @@ const VerifyOtp = () => {
     const verifyOtpApi = async () => {
 
         if(!otp) {
-            return toast.error("OTP is required")
+            return setError("OTP is required")
         }
 
         try {
@@ -117,7 +118,7 @@ const VerifyOtp = () => {
 
                     <h1 className='text-[20px] font-medium'>We send you a code</h1>
                     <h2 className='text-gray-600 text-[14px]'>{`We already sent five digit code ${email}, please check your email and enter the code bellow`}</h2>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between mb-0">
                         {Array(6).fill().map((_, i) => (
                             <input
                                 key={i}
@@ -125,11 +126,15 @@ const VerifyOtp = () => {
                                 maxLength={1}
                                 onChange={(e) => handleChange(e, i)}
                                 onKeyDown={(e) => handleKeyDown(e, i)}
-                                className="sm:w-13 sm:h-13 w-11 h-11 text-xl text-center border border-gray-300 rounded-lg outline-[#7575C6]"
+                                className={`sm:w-13 sm:h-13 w-11 h-11 text-xl text-center border ${error ? "border-red-500" : "border-gray-300"} rounded-lg outline-[#7575C6]`}
 
                             />
                         ))}
+                    
                     </div>
+                    {error && (
+                        <span className="text-red-500 text-[12px] ">{error}</span>
+                    )}
                     <button disabled={loader} onClick={verifyOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-1`}>{
                         loader ? <PuffLoader color='white' size={24} /> : "Login now"
                     }</button>

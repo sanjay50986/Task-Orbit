@@ -8,6 +8,7 @@ import SetupTeammates from './SetupTeammates'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useAuthContext } from '@/context/AuthContext'
 import { toast } from 'sonner'
+import SetupSuccessShow from './SetupSuccessShow'
 
 const rightSlider = () => {
 
@@ -17,7 +18,8 @@ const rightSlider = () => {
     StepProfileInfo,
     SetupCompanyInfo,
     SetupWorkspace,
-    SetupTeammates
+    SetupTeammates,
+    SetupSuccessShow
   ]
 
   const [currentStep, setCurrentStep] = useState(0)
@@ -44,12 +46,12 @@ const rightSlider = () => {
   }
 
   return (
-    <div className="flex h-screen">
-      <div className="xl:w-[20%] md:w-[33%] sm:w-[40%] bg-white m-4 rounded-2xl">
+    <div className="flex h-screen max-md:justify-center">
+      <div className="xl:w-[20%] md:w-[33%] sm:w-[40%] bg-white m-4 rounded-2xl hidden md:block">
         <ProgressSidebar currentStep={currentStep} />
       </div>
 
-      <div className="w-[80%] flex items-center justify-center relative overflow-hidden">
+      <div className="md:w-[80%] w-full flex items-center justify-center relative overflow-y-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}

@@ -77,7 +77,7 @@ const Login = () => {
           />
 
           <label className="font-medium text-[14px]">Password</label>
-          <div className={`border p-[8px] rounded-md flex items-center justify-between pr-3 transition-all duration-200 mt-1 mb-0 ${passwordError ? "border-red-500" : "border-gray-200"}`}>
+          <div className={`border p-[8px] hover:bg-gray-50 rounded-md flex items-center justify-between pr-3 transition-all duration-200 mt-1 mb-0 ${passwordError ? "border-red-500" : "border-gray-200"}`}>
             <input
               className={"outline-none text-[14px] w-full px-1"}
               placeholder="Enter password"
@@ -99,7 +99,7 @@ const Login = () => {
             <span className="text-red-500 text-[12px] ">{passwordError}</span>
           )}
 
-          <div className="flex justify-end">
+          <div className="flex justify-end pt-1.5">
             <Link
               to="/auth/forget-password"
               className="font-medium text-[14px] text-[#7575C6]"

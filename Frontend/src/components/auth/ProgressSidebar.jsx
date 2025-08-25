@@ -28,23 +28,19 @@ const ProgressSidebar = ({ currentStep }) => {
 
                     return (
                         <div key={index} className='flex gap-4'>
-                            {/* ICON + LINE COLUMN */}
                             <div className='flex flex-col items-center'>
-                                {/* Outer Circle */}
                                 <div className={`${index < currentStep ? "border-[#7575C6]" : "border-gray-200"} border rounded-full p-1`}>
-                                    {/* Inner Circle */}
                                     <div className={`${index < currentStep ? "bg-[#7575C6] text-white" : "bg-gray-200 text-gray-600"} rounded-full p-3`}>
                                         <Icon className="w-5 h-5" />
                                     </div>
                                 </div>
 
-                                {/* Vertical Line */}
+                            
                                 {!isLast && (
                                     <div className={`${index < currentStep ? "bg-[#7575C6]" : "bg-gray-300"} w-[2px] h-10 transition duration-400`} />
                                 )}
                             </div>
 
-                            {/* TEXT COLUMN */}
                             <div className="pt-1">
                                 <h1 className='text-gray-600 text-[12px]'>Step {step.id + 1}</h1>
                                 <h2 className='font-medium text-[13px]'>{step.title}</h2>
