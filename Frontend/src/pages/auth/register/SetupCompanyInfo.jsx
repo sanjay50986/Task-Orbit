@@ -8,11 +8,11 @@ const SetupCompanyInfo = ({ onContinue }) => {
     const { setCompany, setIndustry, setRole, signUpApi } = useAuthContext()
 
     return (
-        <div className='bg-white p-4 rounded-2xl space-y-2 lg:w-[550px] sm:w-[450px] py-6 px-4.5 max-md:mx-4' >
+        <div className='bg-white p-4 rounded-2xl space-y-2 lg:w-[520px] sm:w-[450px] py-6 px-4.5 max-md:mx-4' >
             <h1 className='text-[22px] font-medium '>Tell about yourself</h1>
             <p className='text-gray-600  text-[14px]'>Share some details about yourself like your role, work, etc, and your preferences to personalize your experience</p>
 
-            <div className='space-y-4.5 mt-5'>
+            <div className='space-y-3 mt-5'>
                 <TextInput
                     label="Company/organization"
                     placeholder="Enter name"
@@ -22,7 +22,7 @@ const SetupCompanyInfo = ({ onContinue }) => {
 
 
                 <div className='flex flex-col'>
-                    <label className='font-medium text-[14px]'>Industry/field</label>
+                    <label className='font-medium text-[13px]'>Industry/field</label>
                     <select className='border border-gray-200 p-2 rounded-md outline-none mt-1 text-[14px]'
                         onChange={(e) => setIndustry(e.target.value)}>
                         <option >Select Industry</option>
@@ -37,7 +37,7 @@ const SetupCompanyInfo = ({ onContinue }) => {
 
 
                 <div className='flex flex-col'>
-                    <label className='font-medium text-[14px]'>Your role</label>
+                    <label className='font-medium text-[13px]'>Your role</label>
                     <select className='border border-gray-200 p-2 rounded-md outline-none mt-1 text-[14px]'
                         onChange={(e) => setRole(e.target.value)}>
                         <option value="admin">Select Role</option>
@@ -49,7 +49,7 @@ const SetupCompanyInfo = ({ onContinue }) => {
                     </select>
                 </div>
 
-                <button onClick={onContinue} className='secondary-btn text-white mt-3'>
+                <button onClick={onContinue} className='secondary-btn text-white mt-4'>
                     Continue
                 </button>
 

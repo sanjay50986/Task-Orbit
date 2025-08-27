@@ -15,10 +15,6 @@ const rightSlider = () => {
   const { email, firstName, password, phoneNumber, lastName, role, industry, company } = useAuthContext()
 
   const setups = [
-    StepProfileInfo,
-    SetupCompanyInfo,
-    SetupWorkspace,
-    SetupTeammates,
     SetupSuccessShow
   ]
 
@@ -95,9 +91,6 @@ const rightSlider = () => {
           </motion.div>
         </AnimatePresence>
       </div>
-
-
-
     </div>
   )
 }

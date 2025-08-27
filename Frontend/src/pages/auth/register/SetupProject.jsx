@@ -9,11 +9,10 @@ const SetupProject = ({onContinue}) => {
         "#A5D426", "#FB6BA9", "#FFE13A", "#F9A069", "#F26964", "#BDBDBD", "#5A5A5A", "#8E6651"
     ];
 
-
     const [selectedColor, setSelectedColor] = useState("#A5D426");
 
     return (
-        <div className="bg-white rounded-2xl w-[550px]">
+        <div className="bg-white rounded-2xl w-[520px] max-sm:mx-4">
             <div className='p-6'>
                 <h1 className='text-[22px] font-medium '>Setting your workspace</h1>
                 <p className='text-gray-600  text-[14px] pt-2'>Name your workspace, add projects and tasks, and <br /> edit them anytime later.</p>
@@ -44,9 +43,9 @@ const SetupProject = ({onContinue}) => {
                     />
 
                     <div className='flex flex-col'>
-                        <h2 className='font-medium text-[14px]'>Color</h2>
+                        <h2 className='font-medium text-[13px]'>Color</h2>
                         <div className="border border-gray-200 p-3 rounded-md mt-1">
-                            <div className="grid grid-cols-8 gap-2 max-w-md mx-auto">
+                            <div className="grid grid-cols-8 max-sm:grid-cols-4 gap-2 max-w-md mx-auto">
                                 {colors.map((color) => (
                                     <div
                                         key={color}

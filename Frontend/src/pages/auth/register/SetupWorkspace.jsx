@@ -5,7 +5,7 @@ import workspace_icon from '@/assets/workspace_icon.png'
 
 const SetupWorkspace = ({ onContinue }) => {
   return (
-    <div className="bg-white rounded-2xl w-[550px] max-md:mx-4 ">
+    <div className="bg-white rounded-2xl w-[520px] max-md:mx-4 ">
       <div className="p-6">
         <h1 className="text-[22px] font-medium ">Setting your workspace</h1>
         <p className="text-gray-600  text-[14px] pt-2">
@@ -37,7 +37,7 @@ const SetupWorkspace = ({ onContinue }) => {
             </div>
 
             <div className="max-md:text-center">
-              <h1 className="text-[16px] font-medium ">Add profile image</h1>
+              <h1 className="text-[15px] font-medium ">Add profile image</h1>
               <p className="text-gray-600  text-[12px] ">
                 Add your profile image with min size
               </p>
@@ -48,8 +48,8 @@ const SetupWorkspace = ({ onContinue }) => {
           </div>
 
           <button className="flex items-center gap-1.5 border max-md:w-full max-md:justify-center max-md:mt-5 border-gray-300 p-2 rounded-md px-3 cursor-pointer shadow">
-            <Images className="w-[20px] h-[20px]" />
-            <span className="font-medium text-[14px]">Upload</span>
+            <Images className="w-[18px] h-[18px]" />
+            <span className="font-medium text-[13px]">Upload</span>
           </button>
         </div>
 
@@ -60,7 +60,7 @@ const SetupWorkspace = ({ onContinue }) => {
         />
 
         <div className="flex flex-col mt-4">
-          <label className="font-medium text-[14px]">Description</label>
+          <label className="font-medium text-[13px]">Description</label>
           <textarea
             className="border border-gray-200 p-2 rounded-md outline-none mt-1 text-[14px] h-[150px] resize-none"
             placeholder="Add workspace description"
