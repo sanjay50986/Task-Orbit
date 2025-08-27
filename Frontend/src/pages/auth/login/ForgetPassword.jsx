@@ -55,7 +55,7 @@ const ForgetPassword = () => {
 
   return (
     <div className="flex justify-center items-center h-[80vh]">
-      <div className="bg-white rounded-2xl p-2  max-sm:mx-4 w-[450px]">
+      <div className="bg-white rounded-2xl p-2  max-sm:mx-4 w-[420px]">
         <div className="p-2  space-y-3">
           <h1 className="text-[20px] font-medium">Create your new password</h1>
           <h2 className="text-gray-600 text-[14px]">
@@ -63,7 +63,7 @@ const ForgetPassword = () => {
             to log in once updated
           </h2>
 
-          <div className="space-y-4 mt-4">
+          <div className="space-y-2.5 mt-4">
             <TextInput
               label="Email"
               placeholder="Enter your email"
@@ -71,7 +71,7 @@ const ForgetPassword = () => {
               onChange={(e) => setEmail(e.target.value)}
               error={error}
             />
-            <label className="font-medium text-[14px]">Create password</label>
+            <label className="font-medium text-[13px]">Create password</label>
             <div
               className={`border p-[8px] hover:bg-gray-50 rounded-md flex items-center justify-between pr-3 transition-all duration-200 mt-1 mb-0 ${
                 passwordError ? "border-red-500" : "border-gray-200"

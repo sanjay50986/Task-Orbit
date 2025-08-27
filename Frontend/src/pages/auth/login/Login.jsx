@@ -53,19 +53,18 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-[90vh]">
-      <div className="bg-white rounded-2xl p-2  max-sm:mx-4 w-[450px]">
-        <div className="p-2 space-y-3">
+      <div className="bg-white rounded-2xl p-2 max-sm:mx-4 w-[420px]">
+        <div className="p-2 space-y-2">
           <h1 className="text-[20px] font-medium">Hi, welcome back!</h1>
           <h2 className="text-gray-600 text-[14px]">
-            Login with your email and password you have been created before, or
-            you can create new Tackito account
+            Login with your email and password you have been created before, or you can create new TaskOrbit account
           </h2>
-          <button className="primary-btn space-x-3">
+          <button className="primary-btn space-x-3 mt-4">
             {" "}
             <FaGoogle />
             <span className=" font-medium">Sign up with Google</span>
           </button>
-          <h4 className="text-center text-gray-600 text-[14px] font-medium pt-2">
+          <h4 className="text-center text-gray-400 text-[13px] font-medium pt-2">
             Or continue with
           </h4>
           <TextInput
@@ -76,7 +75,7 @@ const Login = () => {
             error={error}
           />
 
-          <label className="font-medium text-[14px]">Password</label>
+          <label className="font-medium text-[13px]">Password</label>
           <div className={`border p-[8px] hover:bg-gray-50 rounded-md flex items-center justify-between pr-3 transition-all duration-200 mt-1 mb-0 ${passwordError ? "border-red-500" : "border-gray-200"}`}>
             <input
               className={"outline-none text-[14px] w-full px-1"}
@@ -99,10 +98,10 @@ const Login = () => {
             <span className="text-red-500 text-[12px] ">{passwordError}</span>
           )}
 
-          <div className="flex justify-end pt-1.5">
+          <div className="flex justify-end pt-3">
             <Link
               to="/auth/forget-password"
-              className="font-medium text-[14px] text-[#7575C6]"
+              className="font-medium text-[13px] text-[#7575C6]"
             >
               Forget password?
             </Link>
@@ -120,7 +119,7 @@ const Login = () => {
         </div>
 
         <div className="bg-[#f5f5f5] rounded-lg p-3 mt-2">
-          <h5 className="text-gray-600 text-center text-[14px]">
+          <h5 className="text-gray-600 text-center text-[13px]">
             Don't have an account?{" "}
             <Link to="/auth/register" className="text-[#7575C6] font-medium">
               Create account

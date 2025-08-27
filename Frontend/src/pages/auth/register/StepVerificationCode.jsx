@@ -113,11 +113,11 @@ const VerifyOtp = () => {
 
     return (
         <div className='flex justify-center items-center max-sm:mx-4 h-[80vh]'>
-            <div className='bg-white rounded-2xl p-2 w-[460px]'>
+            <div className='bg-white rounded-2xl p-2 w-[440px]'>
                 <div className='p-2  space-y-3'>
 
                     <h1 className='text-[20px] font-medium'>We send you a code</h1>
-                    <h2 className='text-gray-600 text-[14px]'>{`We already sent five digit code ${email}, please check your email and enter the code bellow`}</h2>
+                    <h2 className='text-gray-600  text-[14px]'>{`We already sent five digit code ${email}, please check your email and enter the code bellow`}</h2>
                     <div className="flex justify-between mb-0">
                         {Array(6).fill().map((_, i) => (
                             <input
@@ -135,7 +135,7 @@ const VerifyOtp = () => {
                     {error && (
                         <span className="text-red-500 text-[12px] ">{error}</span>
                     )}
-                    <button disabled={loader} onClick={verifyOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-1`}>{
+                    <button disabled={loader} onClick={verifyOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
                         loader ? <PuffLoader color='white' size={24} /> : "Login now"
                     }</button>
 
@@ -147,14 +147,13 @@ const VerifyOtp = () => {
                     >
                         {timer > 0 ? `Resend in ${timer}s` : "Resend OTP"}
                     </button>
-                    <h4 className='text-center text-gray-600 text-[14px] pt-2 font-medium'>Or continue with</h4>
+                    <h4 className='text-center text-gray-400 text-[13px] pt-2 font-medium'>Or continue with</h4>
                     <button className='primary-btn space-x-3'> <FaGoogle  /><span className=' font-medium'>Sign up with Google</span></button>
 
                 </div>
 
                 <div className='bg-[#f5f5f5] rounded-lg p-3 mt-2'>
-                    <h5 className='text-gray-600 text-center text-[14px]'>Enter wrong email? <Link to="/auth/register" className='text-[#7575C6] font-medium'>Change</Link></h5>
-
+                    <h5 className='text-gray-600 text-center text-[13px]'>Enter wrong email? <Link to="/auth/register" className='text-[#7575C6] font-medium'>Change</Link></h5>
                 </div>
 
             </div>

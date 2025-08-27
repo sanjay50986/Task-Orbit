@@ -48,7 +48,8 @@ const App = () => {
         {
           path: 'forget-password',
           element: <ForgetPassword />
-        }
+        },
+
       ]
     },
 
