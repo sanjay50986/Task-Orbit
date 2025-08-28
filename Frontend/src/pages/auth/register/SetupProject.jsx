@@ -12,7 +12,7 @@ const SetupProject = ({onContinue}) => {
     const [selectedColor, setSelectedColor] = useState("#A5D426");
 
     return (
-        <div className="bg-white rounded-2xl w-[520px] max-sm:mx-4">
+        <div className="bg-white rounded-xl w-[520px] max-sm:mx-4">
             <div className='p-6'>
                 <h1 className='text-[22px] font-medium '>Setting your workspace</h1>
                 <p className='text-gray-600  text-[14px] pt-2'>Name your workspace, add projects and tasks, and <br /> edit them anytime later.</p>

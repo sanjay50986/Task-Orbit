@@ -2,7 +2,7 @@ import ProgressSidebar from '@/components/auth/ProgressSidebar'
 import React, { useState } from 'react'
 import StepProfileInfo from './StepProfileInfo'
 import SetupCompanyInfo from './SetupCompanyInfo'
-import SetupWorkspace from './SetupWorkspace'
+import SetupWorkspace from './Workspace/SetupWorkspace'
 import SetupProject from './SetupProject'
 import SetupTeammates from './SetupTeammates'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -15,7 +15,7 @@ const rightSlider = () => {
   const { email, firstName, password, phoneNumber, lastName, role, industry, company } = useAuthContext()
 
   const setups = [
-    SetupSuccessShow
+    SetupWorkspace
   ]
 
   const [currentStep, setCurrentStep] = useState(0)
