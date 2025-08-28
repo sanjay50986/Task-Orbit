@@ -24,7 +24,7 @@ const SetupWorkspace = ({ onContinue }) => {
   const progress = ((subStep + 1) / subSteps.length) * 100;
 
   return (
-    <div className="bg-white rounded-xl w-[520px] max-md:mx-4 ">
+    <div className="bg-white rounded-xl max-md:mx-4 2xl:w-[70%] xl:w-[95%]  ">
       <div className="p-6">
         <h1 className="text-[22px] font-medium ">Setting your workspace</h1>
         <p className="text-gray-600  text-[14px] pt-2 w-[18rem]">
