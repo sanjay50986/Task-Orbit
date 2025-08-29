@@ -6,8 +6,8 @@ import WorkspaceCardPreview from "@/components/auth/WorkspaceCardPreview";
 
 const WorkspaceInfo = ({ nextSub, label }) => {
   return (
-    <div className="flex xl:flex-row flex-col-reverse w-[100%]">
-      <div className="space-y-2 p-6 w-[50%]">
+    <div className="flex">
+      <div className="space-y-2 p-6 md:w-[50%]">
         <div className="bg-[#f1f2fe] px-3 py-1.5 rounded-3xl inline-block">
           <h2 className="text-[12px] font-medium text-[#7575C6]">
             {`Set ${label}`}
@@ -55,17 +55,15 @@ const WorkspaceInfo = ({ nextSub, label }) => {
           />
         </div>
 
-        <div className="flex justify-between items-center gap-4 mt-14">
           <button
             onClick={nextSub}
             className="secondary-btn text-white px-4 py-2 text-sm"
           >
             Continue
           </button>
-        </div>
       </div>
 
-      <div className="w-[50%] p-6">
+      <div className="md:w-[50%] p-6 max-md:hidden">
         <WorkspaceCardPreview />
       </div>
     </div>

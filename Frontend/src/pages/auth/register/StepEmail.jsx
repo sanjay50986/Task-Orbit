@@ -76,8 +76,8 @@ const RegisterStepOne = () => {
 
 
     return (
-        <div className='flex justify-center items-center h-[80vh]'>
-            <div className='bg-white rounded-2xl p-2  max-sm:mx-4 w-[420px]'>
+        <div className='flex justify-center items-center'>
+            <div className='bg-white rounded-2xl p-2  w-[420px]'>
                 <div className='p-2  space-y-3'>
                     <h1 className='text-[20px] font-medium'>Get Started now!</h1>
                     <h2 className='text-gray-600 text-[14px]'>Register with your email, and we will send you a codes for authentication, and you can create your account!</h2>

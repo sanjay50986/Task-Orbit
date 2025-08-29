@@ -52,8 +52,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[90vh]">
-      <div className="bg-white rounded-2xl p-2 max-sm:mx-4 w-[420px]">
+
+      <div className="bg-white rounded-2xl p-2 w-[420px]">
         <div className="p-2 space-y-2">
           <h1 className="text-[20px] font-medium">Hi, welcome back!</h1>
           <h2 className="text-gray-600 text-[14px]">
@@ -127,7 +127,6 @@ const Login = () => {
           </h5>
         </div>
       </div>
-    </div>
   );
 };
 

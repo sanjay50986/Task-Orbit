@@ -9,7 +9,7 @@ const steps = [
     { id: 3, title: "Invite member", icon: Users },
 ];
 
-const ProgressSidebar = ({ currentStep }) => {
+const OnboardingSidebar = ({ currentStep }) => {
     return (
         <div>
             <img src={Logo} className='h-11 mt-4 ml-3' />
@@ -53,4 +53,4 @@ const ProgressSidebar = ({ currentStep }) => {
     );
 };
 
-export default ProgressSidebar;
+export default OnboardingSidebar;

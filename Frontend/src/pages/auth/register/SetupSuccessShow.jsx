@@ -3,7 +3,7 @@ import create_account_icon from "@/assets/create_account_icon.png";
 
 const SetupSuccessShow = () => {
   return (
-    <div className="flex justify-center items-center rounded-xl max-sm:mx-4 w-[460px] bg-white p-1">
+    <div className="flex justify-center items-center rounded-xl  w-[460px] bg-white p-1">
       <div className="bg-gradient-to-b  from-[#7575C6]/10 from-10% to-white to-80% w-full  rounded-xl flex flex-col items-center p-8">
         <img
           src={create_account_icon}

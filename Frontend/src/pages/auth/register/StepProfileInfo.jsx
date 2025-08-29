@@ -14,7 +14,7 @@ const StepProfileInfo = ({onContinue}) => {
     } = useAuthContext()
 
     return (
-        <div className='bg-white max-md:mx-4 p-4 rounded-xl space-y-2 lg:w-[520px] sm:w-[450px] w-full py-6 px-4.5' >
+        <div className='bg-white  p-4 rounded-xl space-y-2 lg:w-[520px] sm:w-[450px] w-full py-6 px-4.5' >
             <h1 className='text-[22px] font-medium '>Complete your information</h1>
             <p className='text-gray-600  text-[14px]'>Enter your personal data/information, from name until phone number, make sure everything is filled in completely.</p>
 
