@@ -81,7 +81,7 @@ const RegisterStepOne = () => {
                 <div className='p-2  space-y-3'>
                     <h1 className='text-[20px] font-medium'>Get Started now!</h1>
                     <h2 className='text-gray-600 text-[14px]'>Register with your email, and we will send you a codes for authentication, and you can create your account!</h2>
-                    <button className='primary-btn space-x-3'> <FaGoogle /><span className=' font-medium'>Sign up with Google</span></button>
+                    <button className='primary-btn space-x-3 w-full flex items-center justify-center'> <FaGoogle /><span className=' font-medium'>Sign up with Google</span></button>
                     <h4 className='text-center text-gray-400 text-[13px] font-medium pt-2'>Or continue with</h4>
                     <TextInput
                         label="Email"
@@ -91,7 +91,7 @@ const RegisterStepOne = () => {
                         error={error}
                     />
 
-                    <button disabled={loader} onClick={sendOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
+                    <button disabled={loader} onClick={sendOtpApi} className={`secondary-btn w-full text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
                         loader ? <PuffLoader color='white' size={24} /> : "Login now"
                     }</button>
                 </div>

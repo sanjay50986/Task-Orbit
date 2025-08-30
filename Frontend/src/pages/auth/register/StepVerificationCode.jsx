@@ -63,6 +63,7 @@ const VerifyOtp = () => {
 
             if (response.status === 200) {
                 toast.success("OTP verify successfully");
+                localStorage.setItem("isOtpVerified", "true")
                 navigate('/auth/create-profile');
             } else {
                 toast.error("Failed to verify OTP:", data.message || "Unknown error");
@@ -135,20 +136,20 @@ const VerifyOtp = () => {
                     {error && (
                         <span className="text-red-500 text-[12px] ">{error}</span>
                     )}
-                    <button disabled={loader} onClick={verifyOtpApi} className={`secondary-btn text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
-                        loader ? <PuffLoader color='white' size={24} /> : "Login now"
+                    <button disabled={loader} onClick={verifyOtpApi} className={`secondary-btn w-full text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
+                        loader ? <PuffLoader color='white' size={24} /> : "Continue"
                     }</button>
 
                     <button
                         onClick={resendOtpApi}
                         disabled={timer > 0}
-                        className={`primary-btn text-[16px] font-medium text-gray-600 bg-white ${(timer > 0) ? 'opacity-50 cursor-not-allowed' : ''
+                        className={`primary-btn text-[16px] font-medium w-full text-gray-600 bg-white ${(timer > 0) ? 'opacity-50 cursor-not-allowed' : ''
                             }`}
                     >
                         {timer > 0 ? `Resend in ${timer}s` : "Resend OTP"}
                     </button>
                     <h4 className='text-center text-gray-400 text-[13px] pt-2 font-medium'>Or continue with</h4>
-                    <button className='primary-btn space-x-3'> <FaGoogle  /><span className=' font-medium'>Sign up with Google</span></button>
+                    <button className='primary-btn flex items-center justify-center w-full space-x-3'> <FaGoogle  /><span className=' font-medium'>Sign up with Google</span></button>
 
                 </div>
 

@@ -82,7 +82,7 @@ const StepProfileInfo = ({onContinue}) => {
 
                 </div>
 
-                <button onClick={onContinue} className='secondary-btn text-white mt-4'>
+                <button onClick={onContinue} className='secondary-btn text-white mt-4 w-full'>
                     Continue
                 </button>
 

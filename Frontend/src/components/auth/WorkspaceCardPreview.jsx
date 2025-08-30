@@ -4,7 +4,7 @@ import { ChevronsUpDown } from "lucide-react";
 
 const WorkspaceCardPreview = () => {
   return (
-    <div className="bg-[#E2E5FD] rounded-xl pt-10 pl-10  relative">
+    <div className="bg-[#E2E5FD] rounded-xl pt-10 pl-10 relative">
       <div className="bg-white h-full rounded-tl-3xl pt-1 pl-1">
         <div className="bg-[#f5f5f5] rounded-tl-3xl h-full flex justify-between ">
           <div className=" w-[70%] space-y-3">
@@ -37,7 +37,7 @@ const WorkspaceCardPreview = () => {
                   />
                   <div>
                     <h5 className="font-medium text-[14px]">Creative Core</h5>
-                    <p className="text-gray-400 text-[12px]  ">23 Members</p>
+                    <p className="text-gray-500 text-[12px]  ">23 Members</p>
                   </div>
                 </div>
                 <ChevronsUpDown className="text-[#7f7f89]" size={18} />

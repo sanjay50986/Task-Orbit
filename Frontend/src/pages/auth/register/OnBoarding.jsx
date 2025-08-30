@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import StepProfileInfo from './StepProfileInfo'
 import SetupCompanyInfo from './SetupCompanyInfo'
 import SetupWorkspace from './Workspace/SetupWorkspace'
-import SetupProject from './SetupProject'
 import SetupTeammates from './SetupTeammates'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useAuthContext } from '@/context/AuthContext'
@@ -15,7 +14,11 @@ const OnBoarding = () => {
   const { email, firstName, password, phoneNumber, lastName, role, industry, company } = useAuthContext()
 
   const setups = [
-    SetupCompanyInfo
+    StepProfileInfo,
+    SetupCompanyInfo,
+    SetupWorkspace,
+    SetupTeammates,
+    SetupSuccessShow
   ]
 
   const [currentStep, setCurrentStep] = useState(0)
@@ -43,11 +46,11 @@ const OnBoarding = () => {
 
   return (
     <div className="flex h-screen p-4 ">
-      <div className="xl:w-[18%] md:w-[40%]  bg-white rounded-2xl md:block hidden ">
+      <div className=" bg-white rounded-2xl md:block hidden xl:w-[18%] md:w-[30%]">
         <OnboardingSidebar currentStep={currentStep} />
       </div>
 
-      <div className='flex justify-center items-center md:w-[80%]'>
+      <div className='flex justify-center items-center  xl:w-[82%] md:w-[80%]'>
         <StepComponent/>
       </div>
     </div>

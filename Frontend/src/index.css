@@ -15,11 +15,11 @@
 
 
 .primary-btn {
-  @apply flex justify-center w-full h-9 items-center cursor-pointer border border-gray-200  rounded-lg text-[14px] hover:bg-gray-100 duration-200
+  @apply h-10 cursor-pointer border border-gray-200  rounded-lg text-[13px] font-medium hover:bg-gray-100 duration-200
 }
 
 .secondary-btn {
-  @apply flex items-center justify-center cursor-pointer border w-full h-10 border-gray-200 bg-[#212529]  text-[14px] rounded-lg hover:bg-[#6C757D] duration-200
+  @apply cursor-pointer border h-10 border-gray-200 bg-[#212529]  text-[13px] font-medium rounded-lg hover:bg-[#6C757D] duration-200
 }
 
 .create-Btn {

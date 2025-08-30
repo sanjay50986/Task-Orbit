@@ -101,7 +101,7 @@ const ForgetPassword = () => {
           <button
             disabled={loading}
             onClick={forgetPasswordApi}
-            className={`secondary-btn text-[16px] ${
+            className={`secondary-btn text-[16px]  w-full  ${
               loading ? "opacity-90" : "opacity-100"
             } font-medium text-white mt-4`}
           >
@@ -113,7 +113,7 @@ const ForgetPassword = () => {
           </button>
           <Link
             to="/auth/login"
-            className="primary-btn text-[16px] font-medium text-black"
+            className="primary-btn text-[16px] font-medium text-black  flex w-full justify-center items-center "
           >
             Cancel
           </Link>

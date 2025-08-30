@@ -59,7 +59,7 @@ const Login = () => {
           <h2 className="text-gray-600 text-[14px]">
             Login with your email and password you have been created before, or you can create new TaskOrbit account
           </h2>
-          <button className="primary-btn space-x-3 mt-4">
+          <button className="primary-btn space-x-3 mt-4 flex w-full justify-center items-center">
             {" "}
             <FaGoogle />
             <span className=" font-medium">Sign up with Google</span>
@@ -110,7 +110,7 @@ const Login = () => {
           <button
             disabled={loading}
             onClick={loginApi}
-            className={`secondary-btn text-[16px] ${
+            className={`secondary-btn w-full text-[16px] ${
               loading ? "opacity-90" : "opacity-100"
             } font-medium text-white mt-4`}
           >
