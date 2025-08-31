@@ -7,6 +7,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router";
 import { PuffLoader } from "react-spinners";
 import { toast } from "sonner";
+import Cookies from 'js-cookie'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +42,11 @@ const Login = () => {
 
       if (response.ok) {
         toast.success(data.message);
+        Cookies.set("userToken", data.token, {
+          expires: 7,
+          secure: true,
+          sameSite: "Strict",
+        });
       } else {
         toast.error(data.message || "Unknown error");
       }

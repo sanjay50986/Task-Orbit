@@ -2,11 +2,13 @@ import { authApi } from '@/services/authAPI';
 import { baseUrl } from '@/services/baseUrl';
 import React, { createContext, useContext, useState } from 'react'
 import { toast } from 'sonner';
+import Cookies from "js-cookie";
 
 const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
 
+    const [token, setToken] = useState("")
     const [email, setEmail] = useState("")
     const [firstName, setfirstName] = useState("")
     const [lastName, setlastName] = useState("")
@@ -37,9 +39,16 @@ const AuthProvider = ({ children }) => {
             });
 
             const data = await response.json();
+            console.log(data)
 
             if (response.ok) {
                 toast.success("User create successfully");
+                Cookies.set("userToken", data.token, {
+                  expires: 7, 
+                  secure: true,
+                  sameSite: "Strict",
+                });
+                setToken(data.token)
             } else {
                 toast.error(data.message || "Unknown error");
             }
@@ -69,6 +78,7 @@ const AuthProvider = ({ children }) => {
                 company,
                 password,
                 phoneNumber,
+                token
             }}
         >
             {children}

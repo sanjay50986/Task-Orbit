@@ -13,7 +13,7 @@ export const ProtectAuth = ({ children }) => {
 };
 
 export const ProtectVerify = ({children}) => {
-    const isOtpVerified = localStorage.getItem("isOtpVerified")
+    const isOtpVerified = sessionStorage.getItem("isOtpVerified")
 
     if(!isOtpVerified) {
         return <Navigate to="/auth/register"/>

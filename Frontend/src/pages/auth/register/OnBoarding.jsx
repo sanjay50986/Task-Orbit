@@ -51,7 +51,7 @@ const OnBoarding = () => {
       </div>
 
       <div className='flex justify-center items-center  xl:w-[82%] md:w-[80%]'>
-        <StepComponent/>
+        <StepComponent onContinue={next}/>
       </div>
     </div>
   )

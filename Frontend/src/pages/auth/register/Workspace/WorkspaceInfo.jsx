@@ -3,8 +3,12 @@ import workspace_icon from "@/assets/workspace_icon.png";
 import TextInput from "@/components/textInput/TextInput";
 import { Images, User } from "lucide-react";
 import WorkspaceCardPreview from "@/components/auth/WorkspaceCardPreview";
+import { useWorkspaceContext } from "@/context/WorkspaceContext";
 
 const WorkspaceInfo = ({ nextSub, label }) => {
+
+  const {createWorkspace, setWorkspaceName, setWorkspaceDesc } = useWorkspaceContext()
+
   return (
     <div className="flex ">
       <div className="flex flex-col justify-between md:w-[50%] p-6 ">
@@ -46,6 +50,7 @@ const WorkspaceInfo = ({ nextSub, label }) => {
             label="Workspace name"
             placeholder="Enter name"
             type="text"
+            onChange={(e) => setWorkspaceName(e.target.value)}
           />
 
           <div className="flex flex-col mt-4">
@@ -53,6 +58,7 @@ const WorkspaceInfo = ({ nextSub, label }) => {
             <textarea
               className="border border-gray-200 p-2 rounded-md outline-none mt-1 text-[14px] h-[150px] resize-none"
               placeholder="Add workspace description"
+              onChange={(e) => setWorkspaceDesc(e.target.value)}
             />
           </div>
         </div>
@@ -60,7 +66,7 @@ const WorkspaceInfo = ({ nextSub, label }) => {
         <div className="flex items-center justify-between mt-6">
           <button className="primary-btn px-4 text-black">Skip for now</button>
 
-          <button onClick={nextSub} className="secondary-btn px-4  text-white">
+          <button onClick={() => {nextSub(), createWorkspace()}} className="secondary-btn px-4  text-white">
             Continue
           </button>
         </div>

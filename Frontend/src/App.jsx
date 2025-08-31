@@ -4,7 +4,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { ProtectAuth, ProtectVerify } from "./components/auth/ProtectedRoutes";
+import { ProtectAuth, ProtectVerify } from "./components/ProtectedRoutes";
 import RegisterLayout from "./pages/auth/register/RegisterLayout";
 import RegisterStepOne from "./pages/auth/register/StepEmail";
 import VerifyOtp from "./pages/auth/register/StepVerificationCode";
@@ -20,6 +20,8 @@ import Goal from "./pages/goals/Goal";
 import Setting from "./pages/setting/Setting";
 import TaskProvider from "./context/TaskContext";
 import Project from "./pages/projects/Project";
+import WorkspaceProvider from "./context/WorkspaceContext";
+import ProjectProvider from "./context/ProjectContext";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -61,10 +63,14 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <TaskProvider>
-        <RouterProvider router={router} />
-        <Toaster position="bottom-right" richColors duration={3000} />
-      </TaskProvider>
+      <WorkspaceProvider>
+        <ProjectProvider>
+          <TaskProvider>
+            <RouterProvider router={router} />
+            <Toaster position="bottom-right" richColors duration={3000} />
+          </TaskProvider>
+        </ProjectProvider>
+      </WorkspaceProvider>
     </AuthProvider>
   );
 };
