@@ -30,8 +30,7 @@ const SetupTeammates = ({onContinue}) => {
             </button>
           </div>
 
-          <button onClick={onContinue} className='secondary-btn text-[16px] font-medium text-white mt-2'>Continue</button>
-          <button className='primary-btn'> Skip for now</button>
+          <button onClick={onContinue} className='secondary-btn text-[16px] font-medium w-full text-white mt-2'>Continue</button>
 
         </div>
       </div>

@@ -1,42 +1,61 @@
 import React, { createContext, useContext, useState } from 'react'
-
+import { useAuthContext } from './AuthContext'
+import { useWorkspaceContext } from './WorkspaceContext'
+import { baseUrl } from '@/services/baseUrl'
+import { toast } from 'sonner'
 
 const ProjectContext = createContext()
 
-
 const ProjectProvider = ({children}) => {
 
-  const [ProjectName, setProjectName] = useState("")
-  const [ProjectType, setProjectType] = useState("")
-  const [ProjectColor, setProjectColor] = useState("")
+  const {token} = useAuthContext()
+  const {workspaceId} = useWorkspaceContext()
+  const [projectName, setProjectName] = useState("")
+  const [projectType, setProjectType] = useState("")
+  const [selectedColor, setSelectedColor] = useState("#A5D426");
+  const [projectDesc, setProjectDesc] = useState("")
+  const [dueDate, setDueDate] = useState("")
+  const [dueTime, setDueTime] = useState("")
 
-  const createProject = async () => {
+    const createProject = async () => {
+
+        console.log("call api")
         try {
-            if(!workspaceName || !workspaceDesc) {
-                toast.info("Workpace field are required!")
+            if(!projectName || !projectType || selectedColor) {
+                toast.info("Projects field are required!")
             }
 
-            const response = await fetch(`${baseUrl}/projects/${Proje}`, {
+            const response = await fetch(`${baseUrl}/projects/${workspaceId}/project`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    workspaceName: ProjectName,
-                    workSpaceDescription: ProjectType 
+                   projectName: projectName,
+                   projectDescription: projectDesc,
+                   projectType: projectType,
+                   color: selectedColor,
+                   dueDate: dueDate,
+                   dueTime: dueTime
                 })
             })
 
             if(response.status === 201) {
-                toast.success("Workspace created successfully")
+                console.log("project created")
             }
         } catch (error) {
             toast.error(error.message || "Something went wrong")
         }
     }
   return (
-    <ProjectContext.Provider value={{}}>
+    <ProjectContext.Provider value={{
+        createProject,
+        setProjectName,
+        setProjectType,
+        selectedColor,
+        setSelectedColor
+    }}>
         {children}
     </ProjectContext.Provider>
   )

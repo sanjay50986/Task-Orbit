@@ -1,9 +1,10 @@
 import ProjectCardPreview from "@/components/auth/ProjectCardPreview";
 import TextInput from "@/components/textInput/TextInput";
+import { useProjectContext } from "@/context/ProjectContext";
 import { Check, Images, User } from "lucide-react";
 import React, { useState } from "react";
 
-const SetupProject = ({ onContinue }) => {
+const SetupProject = ({ nextSub }) => {
   const colors = [
     "#36678D",
     "#6A68B1",
@@ -23,7 +24,8 @@ const SetupProject = ({ onContinue }) => {
     "#8E6651",
   ];
 
-  const [selectedColor, setSelectedColor] = useState("#A5D426");
+  
+  const { createProject, setProjectName, setProjectType, setSelectedColor, selectedColor } = useProjectContext();
 
   return (
     <div className="flex ">
@@ -44,12 +46,14 @@ const SetupProject = ({ onContinue }) => {
               label="Project name"
               placeholder="Aerotech web design"
               type="text"
+              onChange={(e) => setProjectName(e.target.value)}
             />
 
             <TextInput
               label="Project type"
               placeholder="Web design project"
               type="text"
+              onChange={(e) => setProjectType(e.target.value)}
             />
 
             <div className="flex flex-col">
@@ -82,7 +86,7 @@ const SetupProject = ({ onContinue }) => {
           </button>
 
           <button
-            onClick={onContinue}
+            onClick={() => { nextSub(), createProject() }}
             className="secondary-btn text-white px-4 py-2 text-sm"
           >
             Continue

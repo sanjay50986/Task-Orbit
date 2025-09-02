@@ -39,7 +39,6 @@ const AuthProvider = ({ children }) => {
             });
 
             const data = await response.json();
-            console.log(data)
 
             if (response.ok) {
                 toast.success("User create successfully");

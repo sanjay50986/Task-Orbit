@@ -10,7 +10,6 @@ const projectSchema = new mongoose.Schema(
 
     projectDescription: {
       type: String,
-      required: true,
     },
 
     projectType: {

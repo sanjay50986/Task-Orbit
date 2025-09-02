@@ -1,7 +1,5 @@
 import { baseUrl } from "@/services/baseUrl";
-import { workspaceApi } from "@/services/WorkspaceAPI";
 import React, { createContext, useContext, useState } from "react";
-import { toast } from "sonner";
 import { useAuthContext } from "./AuthContext";
 
 const WorkspaceContext = createContext();
@@ -11,6 +9,7 @@ const WorkspaceProvider = ({ children }) => {
     const {token} = useAuthContext()
     const [workspaceName, setWorkspaceName] = useState("")
     const [workspaceDesc, setWorkspaceDesc] = useState("")
+    const [workspaceId, setWorkspaceId] = useState("")
 
     const createWorkspace = async () => {
         try {
@@ -18,7 +17,7 @@ const WorkspaceProvider = ({ children }) => {
                 toast.info("Workpace field are required!")
             }
 
-            const response = await fetch(`${baseUrl}/workspace/${workspaceApi.create}`, {
+            const response = await fetch(`${baseUrl}/workspace/create`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -30,8 +29,9 @@ const WorkspaceProvider = ({ children }) => {
                 })
             })
 
+            const data = await response.json()
             if(response.status === 201) {
-                toast.success("Workspace created successfully")
+                setWorkspaceId(data?.workspace?._id)
             }
         } catch (error) {
             toast.error(error.message || "Something went wrong")
@@ -43,7 +43,8 @@ const WorkspaceProvider = ({ children }) => {
     <WorkspaceContext.Provider value={{
         createWorkspace,
         setWorkspaceName,
-        setWorkspaceDesc
+        setWorkspaceDesc,
+        workspaceId
     }}>
         {children}
     </WorkspaceContext.Provider>

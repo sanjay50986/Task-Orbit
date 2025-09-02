@@ -15,7 +15,7 @@ export const createProject = async (req, res) => {
     const userId = req.user.id;
     const {workspaceId} = req.params
 
-    if (!projectName || !projectDescription || !projectType || !color) {
+    if (!projectName || !projectType || !color) {
       return res.status(STATUS_CODE.BAD_REQUEST).json({
         success: false,
         message: "All required fields must be provided",
