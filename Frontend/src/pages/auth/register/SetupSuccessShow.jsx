@@ -1,7 +1,12 @@
 import React from "react";
 import create_account_icon from "@/assets/create_account_icon.png";
+import { useNavigate } from "react-router";
+
 
 const SetupSuccessShow = () => {
+
+  const navigate = useNavigate()
+  
   return (
     <div className="flex justify-center items-center rounded-xl  w-[460px] bg-white p-1">
       <div className="bg-gradient-to-b  from-[#7575C6]/10 from-10% to-white to-80% w-full  rounded-xl flex flex-col items-center p-8">
@@ -19,7 +24,7 @@ const SetupSuccessShow = () => {
           workspace, from now on!
         </p>
         <div className="flex justify-center mt-5">
-          <button className="secondary-btn text-white px-4 py-2 text-sm">
+          <button onClick={() => navigate("/workspace/dashboard")} className="secondary-btn text-white px-4 py-2 text-sm">
             Go to home
           </button>
         </div>

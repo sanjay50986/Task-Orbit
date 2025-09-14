@@ -48,8 +48,6 @@ const AuthProvider = ({ children }) => {
                   sameSite: "Strict",
                 });
                 setToken(data.token)
-            } else {
-                toast.error(data.message || "Unknown error");
             }
 
         } catch (error) {

@@ -6,7 +6,7 @@ const steps = [
     { id: 0, title: "Create an account", icon: NotepadText },
     { id: 1, title: "Set Preferences", icon: BriefcaseBusiness },
     { id: 2, title: "Setting workspace", icon: BookText },
-    { id: 3, title: "Invite member", icon: Users },
+    { id: 3, title: "Account created", icon: Users },
 ];
 
 const OnboardingSidebar = ({ currentStep }) => {

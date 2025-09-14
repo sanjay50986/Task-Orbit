@@ -29,7 +29,7 @@ const SetupProject = ({ nextSub }) => {
 
   return (
     <div className="flex ">
-      <div className="flex flex-col justify-between p-6 md:w-[50%]">
+      <div className="flex flex-col justify-between md:w-[50%] p-6">
         <div className="space-y-2">
           <div className="bg-[#f1f2fe] px-3 py-1.5 rounded-3xl inline-block">
             <h2 className="text-[12px] font-medium text-[#7575C6]">

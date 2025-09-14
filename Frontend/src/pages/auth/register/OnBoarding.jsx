@@ -17,14 +17,12 @@ const OnBoarding = () => {
     StepProfileInfo,
     SetupCompanyInfo,
     SetupWorkspace,
-    SetupTeammates,
     SetupSuccessShow
   ]
 
   const [currentStep, setCurrentStep] = useState(0)
 
   const StepComponent = setups[currentStep]
-
 
   const next = () => {
     if (currentStep === 0) {
@@ -33,7 +31,7 @@ const OnBoarding = () => {
       }
     }
 
-    if (currentStep == 1) {
+    if (currentStep === 1) {
       if (!role || !industry || !company) {
         return toast.info("Add your company details")
       }
@@ -45,12 +43,12 @@ const OnBoarding = () => {
   }
 
   return (
-    <div className="flex h-screen p-4 ">
-      <div className=" bg-white rounded-2xl md:block hidden xl:w-[18%] md:w-[30%]">
+    <div className="flex p-4 h-screen ">
+      <div className=" bg-white rounded-2xl md:block hidden w-[18%] min-w-[280px] max-w-[400px]">
         <OnboardingSidebar currentStep={currentStep} />
       </div>
 
-      <div className='flex justify-center items-center  xl:w-[82%] sm:w-[80%]'>
+      <div className='flex justify-center items-center md:w-[82%] w-full'>
         <StepComponent onContinue={next}/>
       </div>
     </div>

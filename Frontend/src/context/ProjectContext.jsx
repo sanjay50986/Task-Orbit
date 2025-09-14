@@ -18,13 +18,7 @@ const ProjectProvider = ({children}) => {
   const [dueTime, setDueTime] = useState("")
 
     const createProject = async () => {
-
-        console.log("call api")
         try {
-            if(!projectName || !projectType || selectedColor) {
-                toast.info("Projects field are required!")
-            }
-
             const response = await fetch(`${baseUrl}/projects/${workspaceId}/project`, {
                 method: 'POST',
                 headers: {
@@ -54,7 +48,9 @@ const ProjectProvider = ({children}) => {
         setProjectName,
         setProjectType,
         selectedColor,
-        setSelectedColor
+        setSelectedColor,
+        projectName,
+        projectType
     }}>
         {children}
     </ProjectContext.Provider>

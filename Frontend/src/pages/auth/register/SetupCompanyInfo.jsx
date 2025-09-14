@@ -8,7 +8,7 @@ const SetupCompanyInfo = ({ onContinue }) => {
     const { setCompany, setIndustry, setRole, signUpApi } = useAuthContext()
 
     return (
-        <div className='bg-white p-4 rounded-xl space-y-2 lg:w-[520px] sm:w-[450px] py-6 px-4.5' >
+        <div className='bg-white  p-4 rounded-xl space-y-2 sm:w-[480px] w-full' >
             <h1 className='text-[22px] font-medium '>Tell about yourself</h1>
             <p className='text-gray-600  text-[14px]'>Share some details about yourself like your role, work, etc, and your preferences to personalize your experience</p>
 

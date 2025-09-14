@@ -13,10 +13,7 @@ const WorkspaceProvider = ({ children }) => {
 
     const createWorkspace = async () => {
         try {
-            if(!workspaceName || !workspaceDesc) {
-                toast.info("Workpace field are required!")
-            }
-
+            
             const response = await fetch(`${baseUrl}/workspace/create`, {
                 method: 'POST',
                 headers: {
@@ -43,6 +40,8 @@ const WorkspaceProvider = ({ children }) => {
     <WorkspaceContext.Provider value={{
         createWorkspace,
         setWorkspaceName,
+        workspaceDesc,
+        workspaceName,
         setWorkspaceDesc,
         workspaceId
     }}>

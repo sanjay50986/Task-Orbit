@@ -60,17 +60,18 @@ const VerifyOtp = () => {
             });
 
             const data = await response.json();
+            console.log(data.message)
 
             if (response.status === 200) {
                 toast.success("OTP verify successfully");
                 sessionStorage.setItem("isOtpVerified", "true")
                 navigate('/auth/create-profile');
             } else {
-                toast.error("Failed to verify OTP:", data.message || "Unknown error");
+                toast.error( data.message || "Unknown error");
             }
 
         } catch (error) {
-            console.error("Error verify OTP:", error.message);
+            toast.error("Error verify OTP:", error.message);
         } finally {
             setloader(false)
         }

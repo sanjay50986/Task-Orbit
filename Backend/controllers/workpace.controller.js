@@ -3,7 +3,6 @@ import { STATUS_CODE } from "../utils/statusCode.js";
 import { UserModel } from "../models/user.model.js";
 import { inviteMemberEmail } from "../utils/sendEmail.js";
 
-
 // Create Workspace
 export const createWorkSpace = async (req, res) => {
   const userId = req.user.id;
@@ -89,6 +88,7 @@ export const deleteWorkspace = async (req, res) => {
   }
 };
 
+// updateWorkpace
 export const updateWorkspace = async (req, res) => {
   try {
     const { workspaceName, workSpaceDescription, workSpaceIcon } = req.body;
@@ -125,10 +125,11 @@ export const updateWorkspace = async (req, res) => {
   }
 };
 
+// inviteMember
 export const inviteMemberToWorkspace = async (req, res) => {
   try {
-    const { workspaceId } = req.params;
     const { email } = req.body;
+    const { workspaceId } = req.params;
 
     const workspace = await WorkspaceModel.findById(workspaceId);
     if (!workspace) {
@@ -138,34 +139,46 @@ export const inviteMemberToWorkspace = async (req, res) => {
       });
     }
 
-    const user = await UserModel.findOne({ email });
-    if (!user) {
-      return res
-        .status(STATUS_CODE.BAD_REQUEST)
-        .json({ success: false, message: "User with this email not found" });
-    }
-
     const existingMember = workspace.members.find(
       (member) => member.email === email
     );
+    
     if (existingMember) {
-      return res.status(400).json({
+      return res.status(STATUS_CODE.BAD_REQUEST).json({
         success: false,
-        message: "This user is already a member of the workspace",
+        message: "This user is already invited or a member of the workspace",
       });
     }
 
+    const user = await UserModel.findOne({ email });
+
     workspace.members.push({
-      userId: user._id,
-      email: user.email, 
-      role: "member", 
+      userId: user ? user._id : null,
+      email,
+      role: "member",
       status: "invited",
     });
+
     await workspace.save();
 
-    const inviteLink = `http://localhost:8000/invite/accept/${workspaceId}?email=${email}`
+    if (user) {
+      const alreadyInWorkspace = user.workspaces.some(
+        (ws) => ws.workspaceId.toString() === workspaceId
+      );
+      if (!alreadyInWorkspace) {
+        user.workspaces.push({
+          workspaceId,
+          role: "member",
+        });
+        await user.save();
+      }
+    }
 
-    await inviteMemberEmail(email, workspace.workspaceName, inviteLink)
+    // Generate invite link
+    const inviteLink = `http://localhost:8000/invite/accept/${workspaceId}?email=${email}`;
+
+    // Send email
+    await inviteMemberEmail(email, workspace.workspaceName, inviteLink);
 
     res.status(STATUS_CODE.OK).json({
       success: true,
@@ -174,8 +187,9 @@ export const inviteMemberToWorkspace = async (req, res) => {
     });
   } catch (error) {
     console.error("Error inviting member:", error);
-    res
-      .status(STATUS_CODE.INTERNAL_SERVER_ERROR)
-      .json({ success: false, message: "Server error" });
+    res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      message: "Server error",
+    });
   }
 };
