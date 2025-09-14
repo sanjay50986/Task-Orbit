@@ -50,7 +50,7 @@ const OnBoarding = () => {
         <OnboardingSidebar currentStep={currentStep} />
       </div>
 
-      <div className='flex justify-center items-center  xl:w-[82%] md:w-[80%]'>
+      <div className='flex justify-center items-center  xl:w-[82%] sm:w-[80%]'>
         <StepComponent onContinue={next}/>
       </div>
     </div>

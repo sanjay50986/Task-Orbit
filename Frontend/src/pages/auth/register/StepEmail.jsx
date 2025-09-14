@@ -76,8 +76,7 @@ const RegisterStepOne = () => {
 
 
     return (
-        <div className='flex justify-center items-center'>
-            <div className='bg-white rounded-2xl p-2  w-[420px]'>
+            <div className='bg-white rounded-2xl p-2 w-[420px]'>
                 <div className='p-2  space-y-3'>
                     <h1 className='text-[20px] font-medium'>Get Started now!</h1>
                     <h2 className='text-gray-600 text-[14px]'>Register with your email, and we will send you a codes for authentication, and you can create your account!</h2>
@@ -92,7 +91,7 @@ const RegisterStepOne = () => {
                     />
 
                     <button disabled={loader} onClick={sendOtpApi} className={`secondary-btn w-full text-[16px] ${loader ? "opacity-90" : "opacity-100"} font-medium text-white mt-4`}>{
-                        loader ? <PuffLoader color='white' size={24} /> : "Login now"
+                        loader ? <PuffLoader color='white' size={24} /> : "Signup now"
                     }</button>
                 </div>
 
@@ -100,7 +99,6 @@ const RegisterStepOne = () => {
                     <h5 className='text-gray-600 text-center text-[13px]'>Already have an account? <Link to="/auth/login" className='text-[#7575C6] font-medium'>Login</Link></h5>
                 </div>
             </div>
-        </div>
     )
 }
 

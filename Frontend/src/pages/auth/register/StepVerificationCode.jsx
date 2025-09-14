@@ -113,7 +113,6 @@ const VerifyOtp = () => {
     }, [timer])
 
     return (
-        <div className='flex justify-center items-center'>
             <div className='bg-white rounded-2xl p-2 w-[440px]'>
                 <div className='p-2  space-y-3'>
 
@@ -158,7 +157,6 @@ const VerifyOtp = () => {
                 </div>
 
             </div>
-        </div>
     )
 }
 
