@@ -118,7 +118,7 @@ const VerifyOtp = () => {
                 <div className='p-2  space-y-3'>
 
                     <h1 className='text-[20px] font-medium'>We send you a code</h1>
-                    <h2 className='text-gray-600  text-[14px]'>{`We already sent five digit code ${email}, please check your email and enter the code bellow`}</h2>
+                    <h2 className='text-gray-600  text-[14px]'>{`We already sent five digit ${email}, please check your email and enter the code bellow`}</h2>
                     <div className="flex justify-between mb-0">
                         {Array(6).fill().map((_, i) => (
                             <input

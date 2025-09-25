@@ -4,7 +4,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { ProtectAuth, ProtectVerify } from "./components/ProtectedRoutes";
+import { ProtectAuth, ProtectVerify, LogoutVerify } from "./components/ProtectedRoutes";
 import RegisterLayout from "./pages/auth/register/RegisterLayout";
 import RegisterStepOne from "./pages/auth/register/StepEmail";
 import VerifyOtp from "./pages/auth/register/StepVerificationCode";
@@ -28,7 +28,11 @@ const App = () => {
     { path: "/", element: <Navigate to="auth/login" replace /> },
     {
       path: "/auth",
-      element: <RegisterLayout />,
+      element: (
+      <LogoutVerify>
+        <RegisterLayout />
+      </LogoutVerify>
+      ),
       children: [
         { path: "register", element: <RegisterStepOne /> },
         { path: "verify", element: <VerifyOtp /> },

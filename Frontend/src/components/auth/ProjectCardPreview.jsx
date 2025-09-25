@@ -1,8 +1,8 @@
 import { ChevronsUpDown, FolderOpenDot } from "lucide-react";
 import React from "react";
 
-const ProjectCardPreview = ({color}) => {
-  console.log(color)
+const ProjectCardPreview = ({color, projectName, projectType}) => {
+
   return (
     <div className="bg-[#E2E5FD] rounded-xl pt-10 pl-10  relative">
       <div className="bg-[#f5f5f5] h-full rounded-tl-3xl pt-1 pl-1">
@@ -24,10 +24,10 @@ const ProjectCardPreview = ({color}) => {
                   <FolderOpenDot size={40} style={{color: color}}/>
                   <div>
                     <h5 className="font-medium text-[16px] text-nowrap">
-                      Arotech Web Page
+                      {projectName}
                     </h5>
                     <p className="text-gray-500 text-[12px]  ">
-                      Website design project
+                      {projectType}
                     </p>
                   </div>
                 </div>

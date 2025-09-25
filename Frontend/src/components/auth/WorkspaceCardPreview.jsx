@@ -2,7 +2,7 @@ import React from "react";
 import workspace_icon from "@/assets/workspace_icon.png";
 import { ChevronsUpDown } from "lucide-react";
 
-const WorkspaceCardPreview = () => {
+const WorkspaceCardPreview = ({workspaceName}) => {
   return (
     <div className="bg-[#E2E5FD] rounded-xl pt-10 pl-10 relative">
       <div className="bg-white h-full rounded-tl-3xl pt-1 pl-1">
@@ -36,7 +36,7 @@ const WorkspaceCardPreview = () => {
                     width={50}
                   />
                   <div>
-                    <h5 className="font-medium text-[14px]">Creative Core</h5>
+                    <h5 className="font-medium text-[14px]">{workspaceName}</h5>
                     <p className="text-gray-500 text-[12px]  ">23 Members</p>
                   </div>
                 </div>

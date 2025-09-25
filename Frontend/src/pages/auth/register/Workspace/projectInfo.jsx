@@ -25,7 +25,7 @@ const SetupProject = ({ nextSub }) => {
   ];
 
   
-  const { createProject, setProjectName, setProjectType, setSelectedColor, selectedColor } = useProjectContext();
+  const { createProject, setProjectName, setProjectType, setSelectedColor, selectedColor, projectName, projectType } = useProjectContext();
 
   return (
     <div className="flex ">
@@ -95,7 +95,10 @@ const SetupProject = ({ nextSub }) => {
       </div>
 
       <div className="md:w-[50%] p-6 max-md:hidden">
-        <ProjectCardPreview color={selectedColor} />
+        <ProjectCardPreview 
+        color={selectedColor}
+        projectName = {projectName}
+        projectType = {projectType} />
       </div>
     </div>
   );

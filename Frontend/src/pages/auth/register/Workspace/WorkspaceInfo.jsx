@@ -7,7 +7,7 @@ import { useWorkspaceContext } from "@/context/WorkspaceContext";
 
 const WorkspaceInfo = ({ nextSub, label }) => {
 
-  const {createWorkspace, setWorkspaceName, setWorkspaceDesc } = useWorkspaceContext()
+  const {createWorkspace, setWorkspaceName, setWorkspaceDesc, workspaceName } = useWorkspaceContext()
 
   return (
     <div className="flex ">
@@ -73,7 +73,8 @@ const WorkspaceInfo = ({ nextSub, label }) => {
       </div>
 
       <div className="md:w-[50%] p-6 max-md:hidden">
-        <WorkspaceCardPreview />
+        <WorkspaceCardPreview 
+        workspaceName= {workspaceName}/>
       </div>
     </div>
   );

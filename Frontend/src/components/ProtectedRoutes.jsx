@@ -21,3 +21,13 @@ export const ProtectVerify = ({children}) => {
 
     return children
 }
+
+export const LogoutVerify = ({children}) => {
+  const token = Cookies.get("userToken");
+
+  if(token) {
+    return <Navigate to="/workspace/dashboard/" replace  />
+  }
+
+  return children
+}

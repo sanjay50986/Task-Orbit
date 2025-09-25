@@ -4,15 +4,20 @@ import { ChevronDown, ChevronsUpDown, ClipboardList, FolderOpenDot, Goal, House,
 import { NavLink } from 'react-router'
 import CreateProject from '@/pages/projects/CreateProject'
 
-const Sidebar = () => {
+const Sidebar = ({setIsExpendedSideBar, isExpendedSideBar}) => {
 
   const [createProjectModel, setCreateProjectModel] = useState(false)
+
   return (
-    <div className='py-2 space-y-4 max-' >
+    <div className="py-2 space-y-4">
       <div className='px-3'>
         <div className='flex py-2.5 justify-between items-center'>
           <img src={Logo} alt='logo' className='object-contain h-6.5' />
-          <PanelsTopLeft className='text-[#7f7f89]' size={20} />
+          <button className='max-lg:cursor-pointer' 
+                  onClick={setIsExpendedSideBar}
+                  disabled={window.innerWidth > 1024}>
+            <PanelsTopLeft className='text-[#7f7f89]' size={20} />
+          </button>
         </div>
 
         <div className='bg-white rounded-md shadow-xs text-[14px] p-1.5 px-6 flex items-center gap-2 mt-4'>
@@ -78,10 +83,10 @@ const Sidebar = () => {
           </button>
         </div>
 
-         <CreateProject
+         {/* <CreateProject
               closeCreateProject={() => setCreateProjectModel(false)}
               createProject={createProjectModel}
-            />
+            /> */}
 
         <NavLink to="/workspace/project" className={({ isActive }) =>
           `flex items-center gap-2  font-medium text-[14px] p-2 rounded-md mt-2  text-gray-500

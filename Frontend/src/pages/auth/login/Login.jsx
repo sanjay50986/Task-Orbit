@@ -4,7 +4,7 @@ import { baseUrl } from "@/services/baseUrl";
 import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { PuffLoader } from "react-spinners";
 import { toast } from "sonner";
 import Cookies from 'js-cookie'
@@ -16,6 +16,7 @@ const Login = () => {
   const [loading, setloading] = useState(false);
   const [error, setError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate()
 
   const loginApi = async () => {
     if (!email) {
@@ -47,6 +48,8 @@ const Login = () => {
           secure: true,
           sameSite: "Strict",
         });
+        navigate("/workspace/dashboard")
+        
       } else {
         toast.error(data.message || "Unknown error");
       }
