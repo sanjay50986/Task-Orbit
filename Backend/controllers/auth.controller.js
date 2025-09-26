@@ -320,3 +320,24 @@ export const forgetPassword = async (req, res) => {
         });
     }
 };
+
+export const getUserProfile = async (req, res) => {
+    try {
+        if(!req.user) {
+            return res.status(STATUS_CODE.UNAUTHORIZED).json({
+                 success: false, 
+                 message: "User not authenticated"
+            })
+        }
+
+        res.status(STATUS_CODE.OK).json({
+            success: true,
+            user: req.user,
+        })
+    } catch (error) {
+        res.status(STATUS_CODE.INTERNAL_SERVER_ERROR).json({ 
+            success: false, 
+            message: "Internal Server error" 
+        });
+    }
+}

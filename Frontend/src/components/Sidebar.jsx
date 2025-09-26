@@ -7,6 +7,7 @@ import CreateProject from '@/pages/projects/CreateProject'
 const Sidebar = ({setIsExpendedSideBar, isExpendedSideBar}) => {
 
   const [createProjectModel, setCreateProjectModel] = useState(false)
+  const [openWorkspace, setOpenWorkspace] = useState(false)
 
   return (
     <div className="py-2 space-y-4">
@@ -31,7 +32,7 @@ const Sidebar = ({setIsExpendedSideBar, isExpendedSideBar}) => {
       <hr className='text-gray-200' />
 
       <div className='px-3.5 '>
-        <div className='bg-white flex shadow-xs rounded-xl py-1.5 px-2 justify-between items-center'>
+        <div className='bg-white flex shadow-xs rounded-lg py-1.5 px-2 justify-between items-center relative'>
           <div className='flex items-center gap-3'>
             <div className='bg-white rounded-xl p-3 border border-gray-200 '>
               <User className='w-[20px] h-[20px]' />
@@ -42,7 +43,31 @@ const Sidebar = ({setIsExpendedSideBar, isExpendedSideBar}) => {
             </div>
           </div>
 
-          <ChevronsUpDown className='text-[#7f7f89]' size={16} />
+          <button className='cursor-pointer'
+                  onClick={() => setOpenWorkspace(!openWorkspace)}>
+            <ChevronsUpDown className='text-[#7f7f89]' size={16} />
+          </button>
+
+          <div className={`absolute w-full bg-white left-0 right-0 top-17 rounded-lg shadow-xs p-2 max-h-[500px]:
+            ${openWorkspace ? "translate-y-0 opacity-100" : "opacity-0 -translate-y-2 pointer-events-none"} transition-all duration-300`}>
+            <h3 className='text-[#7f7f89] text-[13px] font-medium'>All Workspaces</h3>
+            <div className='space-y-2 mt-2 border-b border-gray-200 pb-3'>
+              <div className='flex items-center gap-3 hover:bg-[#f5f5f5] hover:border hover:border-gray-200 p-1.5 rounded-lg cursor-pointer '>
+                <div className='bg-white rounded-lg p-2 border border-gray-200 '>
+                  <User className='w-[16px] h-[16px]' />
+                </div>
+                <div>
+                  <h1 className='text-[12px] font-medium'>Creative Core</h1>
+                  <h2 className='text-[10px] text-[#7f7f89]'>23 Members</h2>
+                </div>
+              </div>
+            </div>
+
+            <button className='flex py-2 border shadow-xs border-gray-300 gap-1.5 rounded-md px-3 cursor-pointer w-full items-center justify-center my-2'>
+              <Plus size={18} />
+              <span className='text-[13px] font-medium'>Add Workspace</span>
+            </button>
+          </div>
         </div>
 
         <h3 className='text-[#7f7f89] pt-4 text-[14px] font-medium '>GENERAL</h3>

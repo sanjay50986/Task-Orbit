@@ -8,7 +8,8 @@ const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
 
-    const [token, setToken] = useState("")
+    const [token, setToken] = useState(() => Cookies.get("userToken"))
+    const [UserDetails, setUserDetails] = useState("")
     const [email, setEmail] = useState("")
     const [firstName, setfirstName] = useState("")
     const [lastName, setlastName] = useState("")
@@ -47,13 +48,33 @@ const AuthProvider = ({ children }) => {
                   secure: true,
                   sameSite: "Strict",
                 });
-                setToken(data.token)
             }
 
         } catch (error) {
             console.error("Error create user:", error.message);
         }
     };
+
+    const fetchUserDetails = async () => {
+         try {
+            const response = await fetch(`${baseUrl}/auth/users`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+
+            const data = await response.json()
+            if(response.status === 200)
+            {
+                setUserDetails(data.user)
+            }
+         } catch (error) {
+            console.error("Error fetching user details:", error.message);
+
+         }
+    }
 
     return (
         <AuthContext.Provider
@@ -75,7 +96,10 @@ const AuthProvider = ({ children }) => {
                 company,
                 password,
                 phoneNumber,
-                token
+                token,
+                setToken,
+                fetchUserDetails,
+                UserDetails
             }}
         >
             {children}

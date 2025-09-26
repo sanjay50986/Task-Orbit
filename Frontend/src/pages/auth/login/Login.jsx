@@ -8,8 +8,10 @@ import { Link, useNavigate } from "react-router";
 import { PuffLoader } from "react-spinners";
 import { toast } from "sonner";
 import Cookies from 'js-cookie'
+import { useAuthContext } from "@/context/AuthContext";
 
 const Login = () => {
+
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

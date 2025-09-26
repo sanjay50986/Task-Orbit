@@ -2,11 +2,15 @@ import { ChevronDown, ChevronRight, Inbox, LogOut, Menu } from 'lucide-react'
 import React, { useState } from 'react'
 import Profile from '../assets/profile.png'
 import Cookies from "js-cookie";
+import { useAuthContext } from '@/context/AuthContext';
 
 
 const Topbar = ({isExpendedSideBar, setIsExpendedSideBar}) => {
 
+  const {UserDetails} = useAuthContext()
   const [topMenu, setTopMenu] = useState(false)
+
+  console.log(UserDetails)
 
   const logOut = () => {
     Cookies.remove("userToken");
@@ -37,7 +41,7 @@ const Topbar = ({isExpendedSideBar, setIsExpendedSideBar}) => {
 
         <button onClick={logOut} className={`${topMenu ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"} cursor-pointer 
           transition-all duration-300 ease-in-out absolute top-10 right-0 shadow-md bg-white border border-gray-300 rounded-md px-4 py-2`}>
-          <h2 className='text-[14px] font-medium text-red-600 flex items-center gap-2'><LogOut size={18} /><span>Logout</span></h2>
+          <h2 className='text-[13px] font-medium text-red-600 flex items-center gap-2'><LogOut size={16} /><span>Logout</span></h2>
         </button>
       </div>
     </div>

@@ -2,15 +2,21 @@ import ProjectTasksChart from '@/components/Home/TaskCompletedChart';
 import TeamPerformaceChart from '@/components/Home/TeamPerformaceChart';
 import UpcomingDeadlinesGraph from '@/components/Home/UpcomingDeadlinesGraph';
 import Profile from '../../assets/profile.png'
-
-
 import { Ellipsis } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useAuthContext } from '@/context/AuthContext';
 
 const Dashboard = () => {
 
+  const { fetchUserDetails } = useAuthContext()
   const tabs = ["Upcoming", "Incomplete", "Overdue", "Complete"];
   const [activeTab, setActiveTab] = useState("Upcoming");
+
+
+  useEffect(() => {
+    fetchUserDetails()
+  }, [])
+  
 
   return (
     <div className='p-4 px-4 w-full'>
