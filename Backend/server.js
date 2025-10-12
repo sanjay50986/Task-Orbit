@@ -4,7 +4,6 @@ import cors from 'cors'
 import {connectDB} from './config/db.js';
 import { authRoutes } from './routes/auth.routes.js';
 import { workspaceRoutes } from './routes/workspace.routes.js';
-import { projectRoutes } from './routes/project.routes.js';
 
 dotenv.config();
 const port = process.env.PORT || 8000
@@ -23,7 +22,6 @@ connectDB()
 
 app.use("/api/auth", authRoutes)
 app.use("/api/workspace", workspaceRoutes)
-app.use("/api/projects", projectRoutes)
 
 
 

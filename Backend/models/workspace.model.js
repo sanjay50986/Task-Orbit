@@ -1,58 +1,34 @@
-import mongoose from "mongoose";
-import { ENUM } from "../utils/enum.js";
+import mongoose, { Schema } from "mongoose";
 
-const workspaceSchema = new mongoose.Schema(
+
+const workspaceSchema = new Schema(
   {
-    workspaceName: {
+    workspaceIcon: {
+      type: String,
+      default: null
+    },
+
+    name: {
       type: String,
       required: true,
+      unique: true
     },
 
-    workSpaceDescription: {
+    description: {
       type: String,
-      required: true,
+      required: true
     },
 
-    workSpaceIcon: {
-      type: String,
-    },
-
-    owner: {
+    ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
-    },
-
-    members: [
-      {
-        userId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-
-        email: {
-          type: String,
-          required: true,
-        },
-
-        role: {
-          type: String,
-          enum: ENUM.ROLES,
-          default: "member",
-        },
-
-        status: {
-          type: String,
-          enum: ENUM.INVITE_MEMBER,
-          default: "invited",
-        },
-      },
-    ],
+      required: true
+    }
   },
-
   {
-    timestamps: true,
+    timestamps: true
   }
-);
+)
 
-export const WorkspaceModel = mongoose.model("Workspace", workspaceSchema);
+
+export const WorkspaceModel = mongoose.model("Workspace", workspaceSchema)

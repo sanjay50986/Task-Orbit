@@ -6,24 +6,29 @@ const userSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
+      required: true,    
     },
 
     lastName: {
       type: String,
+      required: true
     },
 
     email: {
       type: String,
       unique: true,
+      required: true
     },
 
     phoneNumber: {
       type: Number,
       unique: true,
+      required: true
     },
 
     password: {
       type: String,
+      required: true
     },
 
     profileImageUrl: {
@@ -33,26 +38,22 @@ const userSchema = new mongoose.Schema(
 
     companay: {
       type: String,
+      required: true
     },
 
     industry: {
       type: String,
       enum: ENUM.INDUSTRIES,
       default: "Other",
+      required: true
     },
 
     role: {
       type: String,
       enum: ENUM.ROLES,
       default: "user",
+      required: true
     },
-
-    workspaces: [
-      {
-        workspaceId: { type: mongoose.Schema.Types.ObjectId, ref: "Workspace" },
-        role: { type: String, enum: ENUM.ROLES, default: "member" },
-      },
-    ],
   },
   {
     timestamps: true,
